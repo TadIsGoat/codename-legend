@@ -759,7 +759,33 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      tiles-edge_0: -4749522197016743629
+      tiles-edge_1: 3438988024601441937
+      tiles-edge_10: 8370777205072714479
+      tiles-edge_11: -6252875220616339284
+      tiles-edge_12: -3258315232108230587
+      tiles-edge_13: 5690844831864703862
+      tiles-edge_14: 4652238561906359242
+      tiles-edge_15: -4665025183362042575
+      tiles-edge_16: -6410427140916498164
+      tiles-edge_17: 4970852742754450328
+      tiles-edge_18: 3646866774659825660
+      tiles-edge_19: -1572737603592070735
+      tiles-edge_2: -5172275358789428758
+      tiles-edge_20: -33575117662726863
+      tiles-edge_21: -3245525960156188815
+      tiles-edge_22: 7645786071794228270
+      tiles-edge_23: -1924508107863369336
+      tiles-edge_24: 3863125328583638716
+      tiles-edge_25: -2915539890526830547
+      tiles-edge_3: -2466743501263785117
+      tiles-edge_4: -6635234028366167906
+      tiles-edge_5: 8617294483400207059
+      tiles-edge_6: -7469232135139724582
+      tiles-edge_7: 5926540558772239401
+      tiles-edge_8: 980270028680419815
+      tiles-edge_9: -4357172914528994954
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
