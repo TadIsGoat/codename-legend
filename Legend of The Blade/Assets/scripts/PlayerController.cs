@@ -2,22 +2,24 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    Rigidbody2D rb;
+    #region VARIABLES
 
+    [HideInInspector] public Rigidbody2D rb;
+    [HideInInspector] public Vector2 movementInput;
+
+    #endregion
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        rb.AddForce(movementInput, ForceMode2D.Force);
     }
 
-    public void Movement(Vector2 input)
+    public void Movement()
     {
-        input *= 10;
-        rb.AddForce(input, ForceMode2D.Force);
+        
     }
 }
