@@ -259,6 +259,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69a153378836ad84ea0829238ca139ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rb: {fileID: 0}
+  movementInput: {x: 0, y: 0}
+  interval: 0.001
+  maxRunSpeed: 10
+  lerpValue: 0.8
+  runAccel: 20
+  runDeccel: 20
 --- !u!114 &487713472
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -271,6 +278,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddc37aae271d81640a1547a2317d1d6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerController: {fileID: 0}
 --- !u!50 &487713474
 Rigidbody2D:
   serializedVersion: 5
