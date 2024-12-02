@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour
 
         if (timer < 0)
         {
-            #region AWSD movement
+            #region WASD movement
             timer = interval;
 
             Vector2 targetSpeed = movementInput * maxRunSpeed;
