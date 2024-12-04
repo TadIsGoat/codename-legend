@@ -261,11 +261,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   col: {fileID: 0}
-  interval: 0.001
+  interval: 0.0001
   movementInput: {x: 0, y: 0}
   maxRunSpeed: 10
-  runAccel: 10
-  runDeccel: 20
+  runAccel: 5
+  runDeccel: 3
 --- !u!114 &487713472
 MonoBehaviour:
   m_ObjectHideFlags: 0

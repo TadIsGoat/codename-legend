@@ -1038,6 +1038,20 @@ MonoBehaviour:
       layout: 4
       size: {x: 0, y: 0}
       sizeOverridden: 0
+    - dockPosition: 1
+      containerId: overlay-container--right
+      displayed: 0
+      id: unity-spline-inspector
+      index: 16
+      contents: '{"m_Layout":4,"m_Collapsed":false,"m_Floating":false,"m_FloatingSnapOffset":{"x":0.0,"y":0.0},"m_SnapOffsetDelta":{"x":0.0,"y":0.0},"m_FloatingSnapCorner":0,"m_Size":{"x":0.0,"y":0.0},"m_SizeOverridden":false}'
+      floating: 0
+      collapsed: 0
+      snapOffset: {x: 0, y: 0}
+      snapOffsetDelta: {x: 0, y: 0}
+      snapCorner: 0
+      layout: 4
+      size: {x: 0, y: 0}
+      sizeOverridden: 0
     m_ContainerData:
     - containerId: overlay-toolbar__top
       scrollOffset: 0
@@ -1065,7 +1079,7 @@ MonoBehaviour:
   m_AudioPlay: 0
   m_DebugDrawModesUseInteractiveLightBakingData: 0
   m_Position:
-    m_Target: {x: -3.380416, y: 0.53023434, z: -0.008585305}
+    m_Target: {x: -0.8669116, y: -1.2261317, z: -0.004317099}
     speed: 2
     m_Value: {x: -3.380416, y: 0.53023434, z: -0.008585305}
   m_RenderMode: 0
@@ -1117,7 +1131,7 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 7.168641
+    m_Target: 6.7417927
     speed: 2
     m_Value: 7.168641
   m_Ortho:
@@ -1393,7 +1407,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 9eb10000
     m_LastClickedID: 45470
-    m_ExpandedIDs: 00000000ceae0000d0ae0000d2ae0000d4ae0000d6ae0000d8ae0000
+    m_ExpandedIDs: 0000000010b5000012b5000014b5000016b5000018b500001ab50000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1422,7 +1436,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: f0b00000
     m_LastClickedID: 45296
-    m_ExpandedIDs: 00000000ceae0000d0ae0000d2ae0000d4ae0000d6ae0000d8ae0000
+    m_ExpandedIDs: 0000000010b5000012b5000014b5000016b5000018b500001ab50000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
