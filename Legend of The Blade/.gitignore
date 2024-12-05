@@ -71,5 +71,5 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
-*/UserSettings/Layouts/default-6000.dwlt
+*default-6000.dwlt
 *UnityShaderCompiler.exe-0.log
