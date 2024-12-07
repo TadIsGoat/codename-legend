@@ -4,11 +4,9 @@ public class PlayerController : MonoBehaviour
 {
     #region VARIABLES
 
-    [HideInInspector] public Rigidbody2D rb;
-    [HideInInspector] public Collider2D col;
-    [HideInInspector] public CharacterAnimator characterAnimator;
-    private float bufferValue = 0.5f;
-    private Directions lastDirection = Directions.S;
+    private Rigidbody2D rb;
+    private Collider2D col;
+    private CharacterAnimator characterAnimator;
 
     [Header("Movement")]
     [HideInInspector] public Vector2 movementInput; //input from PlayerInput script
@@ -47,53 +45,58 @@ public class PlayerController : MonoBehaviour
     }
 
     #region GETTERS
-    private Directions GetDirection()
+
+    private Data.States GetState()
     {
+        if (Mathf.Abs(rb.linearVelocity.x) > 0.5f || Mathf.Abs(rb.linearVelocity.y) > 0.5f)
+        {
+            return Data.States.walking;
+        }
+        else
+        {
+            return Data.States.idle;
+        }
+    }
+
+    private Data.Directions GetDirection()
+    {
+        float bufferValue = 0.5f;
+        Data.Directions lastDirection = Data.Directions.S;
+
         if (movementInput.x > bufferValue && movementInput.y > bufferValue)
         {
-            lastDirection = Directions.NE;
+            lastDirection = Data.Directions.NE;
         }
         else if (movementInput.x < -bufferValue && movementInput.y > bufferValue)
         {
-            lastDirection = Directions.NW;
+            lastDirection = Data.Directions.NW;
         }
         else if (movementInput.x > bufferValue && movementInput.y < -bufferValue)
         {
-            lastDirection = Directions.SE;
+            lastDirection = Data.Directions.SE;
         }
         else if (movementInput.x < -bufferValue && movementInput.y < -bufferValue)
         {
-            lastDirection = Directions.SW;
+            lastDirection = Data.Directions.SW;
         }
         else if (movementInput.x > bufferValue)
         {
-            lastDirection = Directions.E;
+            lastDirection = Data.Directions.E;
         }
         else if (movementInput.x < -bufferValue)
         {
-            lastDirection = Directions.W;
+            lastDirection = Data.Directions.W;
         }
         else if (movementInput.y > bufferValue)
         {
-            lastDirection = Directions.N;
+            lastDirection = Data.Directions.N;
         }
         else if (movementInput.y < -bufferValue)
         {
-            lastDirection = Directions.S;
+            lastDirection = Data.Directions.S;
         }
         return lastDirection;
     }
 
-    private States GetState()
-    {
-        if (Mathf.Abs(rb.linearVelocity.x) > 0.5f || Mathf.Abs(rb.linearVelocity.y) > 0.5f)
-        {
-            return States.walking;
-        }
-        else
-        {
-            return States.idle;
-        }
-    }
     #endregion
 }
