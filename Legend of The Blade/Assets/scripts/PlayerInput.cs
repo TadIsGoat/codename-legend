@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerInput : MonoBehaviour
 {
-    public InputSystem_Actions actions;
+    private InputSystem_Actions actions;
     [HideInInspector] public PlayerController playerController;
 
     private void Awake()
@@ -22,10 +22,10 @@ public class PlayerInput : MonoBehaviour
 
     private void OnDisable()
     {
-        actions.Disable();
-
         actions.Player.Move.performed -= MovePerformed;
         actions.Player.Move.canceled -= MoveCanceled;
+
+        actions.Disable();
     }
 
     private void MovePerformed(InputAction.CallbackContext context)

@@ -1,16 +1,15 @@
 using UnityEngine;
 
-public class healthScript : MonoBehaviour
+public class HealthScript : MonoBehaviour
 {
-    Rigidbody2D rb;
-    private float currentHealth = 0;
+    private Rigidbody2D rb;
+    [SerializeField] private float currentHealth = 0;
     [SerializeField] private float maxHealth = 100;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         currentHealth = maxHealth;
-        Debug.Log(currentHealth);
     }
 
     public void TakeHit(float damage, float knockback, Vector2 sourcePos)
