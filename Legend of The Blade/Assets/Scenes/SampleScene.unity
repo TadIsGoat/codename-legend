@@ -303,15 +303,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69a153378836ad84ea0829238ca139ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 0}
-  col: {fileID: 0}
   movementInput: {x: 0, y: 0}
   maxRunSpeed: 10
   lerpValue: 0.5
   runAccel: 35
   runDeccel: 20
-  currentDirection: 0
-  characterAnimator: {fileID: 1506676319}
 --- !u!114 &487713472
 MonoBehaviour:
   m_ObjectHideFlags: 0

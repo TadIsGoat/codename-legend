@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CharacterAnimator : MonoBehaviour
@@ -41,8 +40,11 @@ public class CharacterAnimator : MonoBehaviour
                 case Data.States.walking:
                     newAnim = Data.walkAnims[direction].ToString();
                     break;
+                case Data.States.attacking:
+                    newAnim = Data.attackAnims[direction].ToString();
+                    break;
             }
-        } 
+        }
         catch
         {
             Debug.Log("This gameObject is missing a state animation (probably)"); //when this gets state from the controller that the gameObject doesn't have in it's data

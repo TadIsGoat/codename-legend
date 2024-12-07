@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     private Collider2D col;
     private CharacterAnimator characterAnimator;
+    private Data.Directions lastDirection = Data.Directions.S;
 
     [Header("Movement")]
     [HideInInspector] public Vector2 movementInput; //input from PlayerInput script
@@ -44,6 +45,12 @@ public class PlayerController : MonoBehaviour
         #endregion
     }
 
+    public void Attack()
+    {
+        Debug.Log("AAAAAAAAaaaaaa");
+        //fill in here
+    }
+
     #region GETTERS
 
     private Data.States GetState()
@@ -60,8 +67,7 @@ public class PlayerController : MonoBehaviour
 
     private Data.Directions GetDirection()
     {
-        float bufferValue = 0.5f;
-        Data.Directions lastDirection = Data.Directions.S;
+        const float bufferValue = 0.5f;
 
         if (movementInput.x > bufferValue && movementInput.y > bufferValue)
         {

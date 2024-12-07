@@ -1,7 +1,14 @@
 using System.Collections.Generic;
 
-public static class Data //for the player
+public static class Data //PLAYER DATA
 {
+    public enum States //dont forget to add a new switch case in character animator when adding new animations
+    {
+        idle,
+        walking,
+        attacking,
+    }
+
     public enum Directions
     {
         N,
@@ -13,6 +20,7 @@ public static class Data //for the player
         NW,
         NE
     }
+
     public enum Anims //west anims not needed because we can just flip the EAST anim
     {
         idle_S,
@@ -25,13 +33,13 @@ public static class Data //for the player
         walk_N,
         walk_E,
         walk_SE,
-        walk_NE
-    }
+        walk_NE,
 
-    public enum States
-    {
-        idle,
-        walking,
+        attack_S,
+        attack_N,
+        attack_E,
+        attack_SE,
+        attack_NE,
     }
 
     public static readonly Dictionary<Directions, Anims> idleAnims = new Dictionary<Directions, Anims>
@@ -56,5 +64,17 @@ public static class Data //for the player
         { Directions.SW, Anims.walk_SE }, //because we can just flip the EAST anim
         { Directions.NE, Anims.walk_NE },
         { Directions.NW, Anims.walk_NE }, //because we can just flip the EAST anim
+    };
+
+    public static readonly Dictionary<Directions, Anims> attackAnims = new Dictionary<Directions, Anims>
+    {
+        { Directions.S, Anims.attack_S },
+        { Directions.N, Anims.attack_N },
+        { Directions.E, Anims.attack_E },
+        { Directions.W, Anims.attack_E }, //because we can just flip the EAST anim
+        { Directions.SE, Anims.attack_SE },
+        { Directions.SW, Anims.attack_SE }, //because we can just flip the EAST anim
+        { Directions.NE, Anims.attack_NE },
+        { Directions.NW, Anims.attack_NE }, //because we can just flip the EAST anim
     };
 }
