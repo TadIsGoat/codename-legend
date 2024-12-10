@@ -130,6 +130,7 @@ GameObject:
   - component: {fileID: 89210282}
   - component: {fileID: 89210284}
   - component: {fileID: 89210283}
+  - component: {fileID: 89210285}
   m_Layer: 0
   m_Name: base_enemy
   m_TagString: Untagged
@@ -217,6 +218,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!114 &89210285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 89210279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1f1290865c187c4e9b8d4d458b8a4c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentHealth: 0
+  maxHealth: 100
 --- !u!1 &487713467
 GameObject:
   m_ObjectHideFlags: 0
@@ -308,6 +323,14 @@ MonoBehaviour:
   lerpValue: 0.5
   runAccel: 35
   runDeccel: 20
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  attackRange: 1
+  attackWidth: 1
+  damage: 20
+  knockback: 20
+  isAttacking: 0
 --- !u!114 &487713472
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -320,7 +343,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddc37aae271d81640a1547a2317d1d6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerController: {fileID: 0}
 --- !u!50 &487713474
 Rigidbody2D:
   serializedVersion: 5

@@ -21,7 +21,7 @@ public class HealthScript : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            Debug.Log("Dead");
+            gameObject.SetActive(false);
         }
     }
 }

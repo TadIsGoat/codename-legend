@@ -1,4 +1,6 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
@@ -16,12 +18,24 @@ public class PlayerController : MonoBehaviour
     [Range(1, 100)][SerializeField] private float runAccel = 35f; //values outside of Range may be problematic
     [Range(1, 100)][SerializeField] private float runDeccel = 20f; //values outside of Range may be problematic
 
+    [Header("Attack")]
+    [SerializeField] private LayerMask enemyLayer;
+    [SerializeField] private float attackRange = 4f;
+    [SerializeField] private float attackWidth = 1f;
+    [SerializeField] private float damage = 20;
+    [SerializeField] private float knockback = 20f;
+    [SerializeField] private bool isAttacking = false;
+    private Vector2 attackPoint = Vector2.zero; //temporary (hopefully)
+    private Vector2 attackSize = Vector2.zero; //temporary (hopefully)
+    private Animator animator;
+
     #endregion
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         col = GetComponent<Collider2D>();
+        animator = GetComponentInChildren<Animator>();
         characterAnimator = GetComponentInChildren<CharacterAnimator>();
     }
 
@@ -45,17 +59,36 @@ public class PlayerController : MonoBehaviour
         #endregion
     }
 
-    public void Attack()
+    public IEnumerator Attack(Vector2 mousePos)
     {
-        Debug.Log("AAAAAAAAaaaaaa");
-        //fill in here
+        isAttacking = true;
+
+        yield return new WaitForSeconds(animator.GetCurrentAnimatorClipInfo(0).Length / 2); //waits for the half of the anim - will need to change later
+
+        attackPoint = new Vector2(transform.position.x + Mathf.Sin(Vector2.Angle(transform.position, mousePos) * Mathf.Deg2Rad) * attackRange, transform.position.y + Mathf.Cos(Vector2.Angle(transform.position, mousePos) * Mathf.Deg2Rad) * attackRange); //get the attack point in the range from the player in the angle of the mousePos
+        attackSize = new Vector2(attackRange, attackWidth);
+
+        Collider2D[] hit = Physics2D.OverlapBoxAll(Vector2.Lerp(transform.position, attackPoint, 0.5f), attackSize, Vector2.Angle(transform.position, mousePos), enemyLayer);
+
+        foreach (Collider2D enemy in hit) 
+        { 
+            enemy.GetComponent<HealthScript>().TakeHit(damage, knockback, transform.position);
+        }
+
+        yield return new WaitForSeconds(animator.GetCurrentAnimatorClipInfo(0).Length / 2); //waits for the half of the anim - will need to change later
+
+        isAttacking = false;
     }
 
     #region GETTERS
 
     private Data.States GetState()
     {
-        if (Mathf.Abs(rb.linearVelocity.x) > 0.5f || Mathf.Abs(rb.linearVelocity.y) > 0.5f)
+        if (isAttacking)
+        {
+            return Data.States.attacking;
+        }
+        else if (Mathf.Abs(rb.linearVelocity.x) > 0.5f || Mathf.Abs(rb.linearVelocity.y) > 0.5f)
         {
             return Data.States.walking;
         }
@@ -105,4 +138,9 @@ public class PlayerController : MonoBehaviour
     }
 
     #endregion
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawWireCube(attackPoint, attackSize);
+    }
 }
