@@ -9,7 +9,6 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     private Collider2D col;
     private CharacterAnimator characterAnimator;
-    private Data.Directions lastDirection = Data.Directions.S;
 
     [Header("Movement")]
     [HideInInspector] public Vector2 movementInput; //input from PlayerInput script
@@ -100,7 +99,8 @@ public class PlayerController : MonoBehaviour
 
     private Data.Directions GetDirection()
     {
-        const float bufferValue = 0.5f;
+        float bufferValue = 0.5f;
+        Data.Directions lastDirection = Data.Directions.S;
 
         if (movementInput.x > bufferValue && movementInput.y > bufferValue)
         {

@@ -3,20 +3,18 @@ using UnityEngine.InputSystem;
 
 public class PlayerInput : MonoBehaviour
 {
-    private PlayerController playerController;
-    private InputAction moveAction;
-    private InputAction attackAction;
+    private InputSystem_Actions actions;
+    [HideInInspector] public PlayerController playerController;
 
     private void Awake()
     {
+        actions = new InputSystem_Actions();
         playerController = GetComponent<PlayerController>();
-        moveAction = InputSystem.actions.FindAction("Move");
-        attackAction = InputSystem.actions.FindAction("Attack");
     }
 
-    private void Update()
+    private void OnEnable()
     {
-        playerController.movementInput = moveAction.ReadValue<Vector2>();
+        actions.Enable();
 
         if (attackAction.WasPerformedThisFrame()) 
         {
@@ -35,11 +33,25 @@ public class PlayerInput : MonoBehaviour
     {
         moveAction.Enable();
         attackAction.Enable();
+        actions.Player.Move.performed += MovePerformed;
+        actions.Player.Move.canceled += MoveCanceled;
     }
 
-    private void OnDisable() //disables the actions when the gameObject becomes inactive => avoids bugs
+    private void OnDisable()
     {
-        moveAction.Disable();
-        attackAction.Disable();
+        actions.Player.Move.performed -= MovePerformed;
+        actions.Player.Move.canceled -= MoveCanceled;
+
+        actions.Disable();
+    }
+
+    private void MovePerformed(InputAction.CallbackContext context)
+    {
+        playerController.movementInput = context.ReadValue<Vector2>();
+    }
+
+    private void MoveCanceled(InputAction.CallbackContext context)
+    {
+        playerController.movementInput = Vector2.zero;
     }
 }
