@@ -32,6 +32,7 @@ public static class Data //for the player
     {
         idle,
         walking,
+        attacking,
     }
 
     public static readonly Dictionary<Directions, Anims> idleAnims = new Dictionary<Directions, Anims>

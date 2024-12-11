@@ -1,4 +1,4 @@
-using UnityEngine;
+/*using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerInput : MonoBehaviour
@@ -54,4 +54,4 @@ public class PlayerInput : MonoBehaviour
     {
         playerController.movementInput = Vector2.zero;
     }
-}
+}*/
