@@ -1994,6 +1994,7 @@ GameObject:
   - component: {fileID: 491953777}
   - component: {fileID: 491953779}
   - component: {fileID: 491953778}
+  - component: {fileID: 491953780}
   m_Layer: 0
   m_Name: base_player_renderer
   m_TagString: Untagged
@@ -2093,6 +2094,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &491953780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 491953776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f46e15dc6ed562b4695fecd6c658f4ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -2196,6 +2209,9 @@ GameObject:
   - component: {fileID: 1663175490}
   - component: {fileID: 1663175489}
   - component: {fileID: 1663175488}
+  - component: {fileID: 1663175493}
+  - component: {fileID: 1663175492}
+  - component: {fileID: 1663175491}
   m_Layer: 0
   m_Name: base_player
   m_TagString: Untagged
@@ -2283,6 +2299,49 @@ Transform:
   - {fileID: 491953777}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1663175491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1663175487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0f5fb2020eb08c49934b74d2511cbe6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentHealth: 0
+  maxHealth: 100
+--- !u!114 &1663175492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1663175487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3b5138f7a965be4e81a506cafd15473, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1663175493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1663175487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48436c7ac739b9d488cf047239757b83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementInput: {x: 0, y: 0}
+  maxRunSpeed: 10
+  lerpValue: 0.5
+  runAccel: 35
+  runDeccel: 20
 --- !u!1 &1857683030
 GameObject:
   m_ObjectHideFlags: 0
