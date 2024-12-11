@@ -82,6 +82,10 @@ public class PlayerController : MonoBehaviour
 
     private Data.States GetState()
     {
+        if (isAttacking)
+        {
+            return Data.States.attacking;
+        }
         if (Mathf.Abs(rb.linearVelocity.x) > 0.5f || Mathf.Abs(rb.linearVelocity.y) > 0.5f)
         {
             return Data.States.walking;

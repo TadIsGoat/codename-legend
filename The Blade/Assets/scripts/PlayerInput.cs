@@ -20,7 +20,14 @@ public class PlayerInput : MonoBehaviour
 
         if (attackAction.WasPerformedThisFrame()) 
         {
-            playerController.Attack();
+            if (Mouse.current != null)
+            {
+                StartCoroutine(playerController.Attack(Mouse.current.position.ReadValue()));
+            }
+            else
+            {
+                Debug.Log("Mouse not connected!");
+            }
         }
     }
     private void OnEnable() //enables the actions when the gameObject becomes active
