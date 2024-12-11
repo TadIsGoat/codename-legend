@@ -1,8 +1,5 @@
-<<<<<<< HEAD
 using System.Collections;
-=======
 using System.Threading;
->>>>>>> parent of 3733636 (Player controller upgrade + basic health script)
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -19,20 +16,11 @@ public class PlayerController : MonoBehaviour
     private float timer = 0;
 
     [Header("Movement")]
-<<<<<<< HEAD
     [HideInInspector] public Vector2 movementInput; //input from PlayerInput script
     [SerializeField] private float maxRunSpeed = 10f;
     [SerializeField][Tooltip("If the target speed is gonna fall closer to current velocity or (max run speed * input)")][Range(0, 1)] private float lerpValue = 0.5f;
     [Range(1, 100)][SerializeField] private float runAccel = 35f; //values outside of Range may be problematic
     [Range(1, 100)][SerializeField] private float runDeccel = 20f; //values outside of Range may be problematic
-=======
-    [HideInInspector] public Vector2 movementInput; //input from PlayerInput class
-    [SerializeField] public float maxRunSpeed = 10f;
-    private static float lerpValue = 0.5f;
-    [Range(1, 10)][SerializeField] private float runAccel = 5f; //values outside of Range may be problematic
-    [Range(1, 10)][SerializeField] private float runDeccel = 3f; //values outside of Range may be problematic
->>>>>>> parent of 3733636 (Player controller upgrade + basic health script)
-
     [Header("Attack")]
     [SerializeField] private LayerMask enemyLayer;
     [SerializeField] private float attackRange = 4f;
@@ -54,7 +42,6 @@ public class PlayerController : MonoBehaviour
         characterAnimator = GetComponentInChildren<CharacterAnimator>();
     }
 
-<<<<<<< HEAD
     private void Update()
     {
         characterAnimator.ChangeAnimation(GetState(), GetDirection());
@@ -65,24 +52,7 @@ public class PlayerController : MonoBehaviour
         #region WASD movement
         Vector2 targetSpeed = movementInput * maxRunSpeed;
         targetSpeed = Vector2.Lerp(rb.linearVelocity, targetSpeed, lerpValue);
-=======
-    void Update()
-    {
-        timer -= Time.deltaTime;
->>>>>>> parent of 3733636 (Player controller upgrade + basic health script)
 
-        if (timer < 0)
-        {
-            #region WASD movement
-            timer = interval;
-
-<<<<<<< HEAD
-        Vector2 speedDiff = targetSpeed - rb.linearVelocity;
-        Vector2 movement = speedDiff * accelRate;
-
-        rb.AddForce(movement, ForceMode2D.Force);
-        #endregion
-=======
             Vector2 targetSpeed = movementInput * maxRunSpeed;
             targetSpeed = new Vector2(Mathf.Lerp(rb.linearVelocity.x, targetSpeed.x, lerpValue), Mathf.Lerp(rb.linearVelocity.y, targetSpeed.y, lerpValue));
 
@@ -93,7 +63,6 @@ public class PlayerController : MonoBehaviour
             rb.AddForce(movement, ForceMode2D.Force);
             #endregion
         }
->>>>>>> parent of 3733636 (Player controller upgrade + basic health script)
     }
 
     public IEnumerator Attack(Vector2 mousePos)
