@@ -4,11 +4,14 @@ using UnityEngine.InputSystem;
 public class PlayerInput : MonoBehaviour
 {
     private PlayerController playerController;
+    private Weapon weapon;
     private InputAction moveAction;
     private InputAction attackAction;
+    [SerializeField] private Camera cam;
 
     private void Awake()
     {
+        weapon = GetComponentInChildren<Weapon>();
         playerController = GetComponent<PlayerController>();
         moveAction = InputSystem.actions.FindAction("Move");
         attackAction = InputSystem.actions.FindAction("Attack");
@@ -22,7 +25,7 @@ public class PlayerInput : MonoBehaviour
         {
             if (Mouse.current != null)
             {
-                StartCoroutine(playerController.Attack(Mouse.current.position.ReadValue()));
+                StartCoroutine(weapon.Attack(cam.ScreenToWorldPoint(Mouse.current.position.ReadValue())));
             }
             else
             {

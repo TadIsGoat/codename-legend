@@ -47,7 +47,7 @@ public class CharacterAnimator : MonoBehaviour
         }
         catch
         {
-            Debug.Log("This gameObject is missing a state animation (probably)"); //when this gets state from the controller that the gameObject doesn't have in it's data
+            Debug.Log("This gameObject is missing a state animation (probably)"); //when this gets state from the controller that the gameObject doesn't have anim in it's data
         }
 
         if (currentAnim != newAnim)
