@@ -1,15 +1,21 @@
-using UnityEngine;
 using System.Collections;
+using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
+    //that thing
+    private PlayerController playerController;
+
+    //attack parameter variables
     [SerializeField] private float damage = 20f;
     [SerializeField] private float knockback = 20f;
-    [SerializeField] private Rect attackHitBox;
+    [SerializeField][Tooltip("obviously že Vector2 by taky fungoval, ale Rect má lepší visualization")] private Rect attackHitBox;
 
-    private PlayerController playerController;
+    //calculation variables (need to be here coz of gizmos)
     private LayerMask attackLayer;
     private Rect attackRect;
+    private Vector2 playerRelativeMousePos;
+    private float angle;
 
     private void Awake()
     {
@@ -24,20 +30,20 @@ public class Weapon : MonoBehaviour
             Debug.Log("Attackable layer mask not found");
         }
     }
-    
+
     public IEnumerator Attack(Vector2 mousePos)
     {
         playerController.isAttacking = true;
 
-        Vector2 direction = (mousePos - (Vector2)transform.position).normalized;
+        playerRelativeMousePos = (mousePos - (Vector2)transform.position).normalized; //so the position aimed for is relative to the player object, not the world center || .normalized to zaokrouhlit correctly
 
-        Vector2 attackCenter = (Vector2)transform.position + direction * attackHitBox.width / 2f; //center
+        Vector2 attackCenter = (Vector2)transform.position + playerRelativeMousePos * attackHitBox.width / 2f; //get the new center of the attack hitbox
 
-        attackRect = new Rect(attackCenter - attackHitBox.size / 2f, attackHitBox.size); //rect
+        angle = Mathf.Atan2(playerRelativeMousePos.y, playerRelativeMousePos.x) * Mathf.Rad2Deg;
 
-        Debug.DrawLine(transform.position, mousePos, Color.red, 0.1f);
+        attackRect = new Rect(attackCenter - attackHitBox.size / 2f, attackHitBox.size); //get the new attack hitbox
 
-        Collider2D[] hit = Physics2D.OverlapBoxAll(attackRect.center, attackHitBox.size, 0f, attackLayer);
+        Collider2D[] hit = Physics2D.OverlapBoxAll(attackRect.center, attackHitBox.size, angle, attackLayer);
 
         foreach (var target in hit)
         {
@@ -58,69 +64,17 @@ public class Weapon : MonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireCube(attackRect.center, attackRect.size);
-    }
-
-
-
-
-
-
-
-    /*
-     
-    //calculation
-    private float angle;
-
-
-
-    public IEnumerator Attack(Vector3 mousePos)
-    {
-        playerController.isAttacking = true;
-
-        // Calculate the direction vector from the player to the mouse
-        mousePos.z = 0f; // Ensure the attack is in 2D space
-        Vector3 direction = mousePos - transform.position;
-
-        // Calculate the angle from the player to the mouse (in degrees)
-        angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg; // Angle in the range of -180° to 180°
-
-        // Convert the angle to a full 360° range (0 to 360)
-        if (angle < 0)
+        if (!Application.isPlaying)
         {
-            angle += 360f;
+            Gizmos.color = Color.white;
+            Gizmos.DrawWireCube(attackHitBox.center, attackHitBox.size);
         }
 
-        // Update the attackBox center, positioning it based on the angle in front of the player
-        Vector2 offset = new Vector2(Mathf.Cos(angle * Mathf.Deg2Rad) * attackBox.width / 2, Mathf.Sin(angle * Mathf.Deg2Rad) * attackBox.width / 2);
-        attackBox.center = (Vector2)transform.position + offset;
-
-        // Perform collision check with the rotated attack box
-        Collider2D[] hit = Physics2D.OverlapBoxAll(attackBox.center, attackBox.size, angle, attackLayer);
-
-        // Process any hits
-        foreach (Collider2D target in hit)
+        if (attackRect.size != Vector2.zero) //to avoid trying to writeout the gizmo when the value is not set yet
         {
-            HealthScript health = target.GetComponent<HealthScript>();
-            if (health != null)
-            {
-                health.TakeHit(damage, knockback, transform.position);
-            }
+            Gizmos.color = Color.red;
+            Gizmos.matrix = Matrix4x4.TRS(transform.position, Quaternion.Euler(0f, 0f, angle), Vector3.one);
+            Gizmos.DrawWireCube(attackHitBox.center, attackRect.size);
         }
-
-        // Wait before ending the attack
-        yield return new WaitForSeconds(1f);
-
-        playerController.isAttacking = false;
     }
-
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-
-        // Use Gizmos to visualize the attack box and ensure proper rotation
-        Gizmos.matrix = Matrix4x4.TRS(attackBox.center, Quaternion.Euler(0f, 0f, angle), Vector3.one);
-        Gizmos.DrawWireCube(Vector2.zero, attackBox.size);
-    }*/
 }
