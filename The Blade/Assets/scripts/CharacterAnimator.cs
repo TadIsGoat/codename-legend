@@ -1,3 +1,5 @@
+using NUnit.Framework;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class CharacterAnimator : MonoBehaviour
@@ -13,7 +15,7 @@ public class CharacterAnimator : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    public void ChangeAnimation(Data.States state, Data.Directions direction)
+    public void SetAnimation(Dictionary<Data.Directions, Data.Anims> animDic, Data.Directions direction)
     {
         if (direction == Data.Directions.W || direction == Data.Directions.NW || direction == Data.Directions.SW)
         {
@@ -30,25 +32,7 @@ public class CharacterAnimator : MonoBehaviour
             }
         }
 
-        try
-        {
-            switch (state)
-            {
-                case Data.States.idle:
-                    newAnim = Data.idleAnims[direction].ToString();
-                    break;
-                case Data.States.walking:
-                    newAnim = Data.walkAnims[direction].ToString();
-                    break;
-                case Data.States.attacking:
-                    newAnim = Data.attackAnims[direction].ToString();
-                    break;
-            }
-        }
-        catch
-        {
-            Debug.Log("This gameObject is missing a state animation (probably)"); //when this gets state from the controller that the gameObject doesn't have anim in it's data
-        }
+        newAnim = animDic[direction].ToString();
 
         if (currentAnim != newAnim)
         {

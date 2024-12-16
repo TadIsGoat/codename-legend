@@ -1,14 +1,7 @@
 using System.Collections.Generic;
 
-public static class Data //PLAYER DATA
+public static class Data //object-specific variables are set here
 {
-    public enum States //dont forget to add a new switch case in character animator when adding new animations
-    {
-        idle,
-        walking,
-        attacking,
-    }
-
     public enum Directions
     {
         N,

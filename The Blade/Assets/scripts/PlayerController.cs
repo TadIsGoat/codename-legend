@@ -4,38 +4,52 @@ public class PlayerController : MonoBehaviour
 {
     #region VARIABLES
 
+    [Header("References")]
     private Rigidbody2D rb;
-    private Collider2D col;
     private CharacterAnimator characterAnimator;
-    private Data.Directions lastDirection = Data.Directions.S;
-    //attack =============
+    private Weapon weapon;
+
     [HideInInspector] public bool isAttacking;
-    // ===================
 
     [Header("Movement")]
-    [HideInInspector] public Vector2 movementInput; //input from PlayerInput script
-    [SerializeField] private float maxRunSpeed = 10f;
-    [SerializeField][Tooltip("If the target speed is gonna fall closer to current velocity or (max run speed * input)")][Range(0, 1)] private float lerpValue = 0.5f;
-    [Range(1, 100)][SerializeField] private float runAccel = 35f; //values outside of Range may be problematic
-    [Range(1, 100)][SerializeField] private float runDeccel = 20f; //values outside of Range may be problematic
+    public Vector2 movementInput; //input from PlayerInput script
+    public float maxRunSpeed = 10f;
+    [Tooltip("If the target speed is gonna fall closer to current velocity or (max run speed * input)")][Range(0, 1)] public float lerpValue = 0.5f;
+    [Range(1, 100)] public float runAccel = 35f; //values outside of Range may be problematic
+    [Range(1, 100)] public float runDeccel = 20f; //values outside of Range may be problematic
+
+    [Header("States")]
+    [SerializeField] private State state;
+    public IdleState idleState;
+    public WalkState walkState;
+    public AttackState attackState;
 
     #endregion
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        col = GetComponent<Collider2D>();
         characterAnimator = GetComponentInChildren<CharacterAnimator>();
+        weapon = GetComponentInChildren<Weapon>();
+    }
+
+    private void Start()
+    {
+        idleState.Setup(rb, this, characterAnimator);
+        walkState.Setup(rb, this, characterAnimator);
+        attackState.Setup(rb, this, characterAnimator);
+        state = idleState;
     }
 
     private void Update()
     {
-        characterAnimator.ChangeAnimation(GetState(), GetDirection());
+        SetState();
+        state.Do();
     }
 
     private void FixedUpdate()
     {
-        #region WASD movement
+        #region WASD MOVEMENT
         Vector2 targetSpeed = movementInput * maxRunSpeed;
         targetSpeed = Vector2.Lerp(rb.linearVelocity, targetSpeed, lerpValue);
 
@@ -48,64 +62,34 @@ public class PlayerController : MonoBehaviour
         #endregion
     }
 
-    
-
-    #region GETTERS
-
-    private Data.States GetState()
+    public void Attack(Vector2 mousePos)
     {
+        //weapon needs to have separate animator, the player attack anim needs to be set to last till weapon attack anim is playing and everything needs to fucking work
+        StartCoroutine(weapon.Attack(mousePos));
+    }
+
+    private void SetState()
+    {
+        State oldState = state;
+
         if (isAttacking)
         {
-            return Data.States.attacking;
+            state = attackState;
         }
-        else if (Mathf.Abs(rb.linearVelocity.x) > 0.5f || Mathf.Abs(rb.linearVelocity.y) > 0.5f)
+        if (movementInput != Vector2.zero)
         {
-            return Data.States.walking;
+            state = walkState;
         }
         else
         {
-            return Data.States.idle;
+            state = idleState;
+        }
+
+        if (oldState != state || oldState.isComplete)
+        {
+            oldState.Exit();
+            state.Initialize();
+            state.Enter();
         }
     }
-
-    private Data.Directions GetDirection()
-    {
-        const float bufferValue = 0.5f;
-
-        if (movementInput.x > bufferValue && movementInput.y > bufferValue)
-        {
-            lastDirection = Data.Directions.NE;
-        }
-        else if (movementInput.x < -bufferValue && movementInput.y > bufferValue)
-        {
-            lastDirection = Data.Directions.NW;
-        }
-        else if (movementInput.x > bufferValue && movementInput.y < -bufferValue)
-        {
-            lastDirection = Data.Directions.SE;
-        }
-        else if (movementInput.x < -bufferValue && movementInput.y < -bufferValue)
-        {
-            lastDirection = Data.Directions.SW;
-        }
-        else if (movementInput.x > bufferValue)
-        {
-            lastDirection = Data.Directions.E;
-        }
-        else if (movementInput.x < -bufferValue)
-        {
-            lastDirection = Data.Directions.W;
-        }
-        else if (movementInput.y > bufferValue)
-        {
-            lastDirection = Data.Directions.N;
-        }
-        else if (movementInput.y < -bufferValue)
-        {
-            lastDirection = Data.Directions.S;
-        }
-        return lastDirection;
-    }
-
-    #endregion
 }

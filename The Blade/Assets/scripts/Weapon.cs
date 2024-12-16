@@ -33,9 +33,7 @@ public class Weapon : MonoBehaviour
 
     public IEnumerator Attack(Vector2 mousePos)
     {
-        playerController.isAttacking = true;
-
-        playerRelativeMousePos = (mousePos - (Vector2)transform.position).normalized; //so the position aimed for is relative to the player object, not the world center || .normalized to zaokrouhlit correctly
+        playerRelativeMousePos = (mousePos - (Vector2)transform.position).normalized; //so the position aimed for is relative to the player object, not the world center | .normalized to zaokrouhlit correctly
 
         Vector2 attackCenter = (Vector2)transform.position + playerRelativeMousePos * attackHitBox.width / 2f; //get the new center of the attack hitbox
 
@@ -58,8 +56,6 @@ public class Weapon : MonoBehaviour
         }
 
         yield return new WaitForSeconds(1f);
-
-        playerController.isAttacking = false;
     }
 
     private void OnDrawGizmosSelected()
