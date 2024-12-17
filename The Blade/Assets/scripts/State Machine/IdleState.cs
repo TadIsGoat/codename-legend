@@ -4,7 +4,7 @@ public class IdleState : State
 {
     public override void Enter()
     {
-        characterAnimator.SetAnimation(Data.idleAnims, Helper.GetDirection(playerController.movementInput, lastDirection, true));
+        characterAnimator.SetAnimation(data.idleAnims, directionSensor.GetDirection(rb.linearVelocity));
     }
 
     public override void Do()

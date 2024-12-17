@@ -3,33 +3,26 @@ using UnityEngine;
 
 public abstract class State : MonoBehaviour
 {
-    public bool isComplete { get; protected set; }
-    public Data.Directions lastDirection { get; protected set; }
 
-    //following need to be set in Setup()
-    protected PlayerController playerController;
-    protected Rigidbody2D rb;
-    protected CharacterAnimator characterAnimator;
+    protected Core core;
+    protected Rigidbody2D rb => core.rb;
+    protected CharacterAnimator characterAnimator => core.characterAnimator;
+    protected DirectionSensor directionSensor => core.directionSensor;
+    protected Data data => core.data;
+
+    public bool isComplete { get; protected set; }
 
     public virtual void Enter() { }
     public virtual void Do() { }
     public virtual void FixedDo() { }
     public virtual void Exit() { }
 
-    public void Setup(Rigidbody2D _rb, PlayerController _playerController, CharacterAnimator _characterAnimator)
+    public void SetCore(Core _core)
     {
-        rb = _rb;
-        playerController = _playerController;
-        characterAnimator = _characterAnimator;
+        core = _core;
     }
-
     public void Initialize()
     {
         isComplete = false;
-    }
-
-    private void Start()
-    {
-        lastDirection = Data.Directions.S;
     }
 }

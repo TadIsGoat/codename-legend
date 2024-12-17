@@ -1,6 +1,7 @@
 using System.Collections.Generic;
+using UnityEngine;
 
-public static class Data //object-specific variables are set here
+public class Data : MonoBehaviour //object-specific variables are set here
 {
     public enum Directions
     {
@@ -35,7 +36,7 @@ public static class Data //object-specific variables are set here
         attack_NE,
     }
 
-    public static readonly Dictionary<Directions, Anims> idleAnims = new Dictionary<Directions, Anims>
+    public Dictionary<Directions, Anims> idleAnims = new Dictionary<Directions, Anims>
     {
         { Directions.S, Anims.idle_S },
         { Directions.N, Anims.idle_N },
@@ -47,7 +48,7 @@ public static class Data //object-specific variables are set here
         { Directions.NW, Anims.idle_E }, //because we can just flip the EAST anim
     };
 
-    public static readonly Dictionary<Directions, Anims> walkAnims = new Dictionary<Directions, Anims>
+    public Dictionary<Directions, Anims> walkAnims = new Dictionary<Directions, Anims>
     {
         { Directions.S, Anims.walk_S },
         { Directions.N, Anims.walk_N },
@@ -59,7 +60,7 @@ public static class Data //object-specific variables are set here
         { Directions.NW, Anims.walk_NE }, //because we can just flip the EAST anim
     };
 
-    public static readonly Dictionary<Directions, Anims> attackAnims = new Dictionary<Directions, Anims>
+    public Dictionary<Directions, Anims> attackAnims = new Dictionary<Directions, Anims>
     {
         { Directions.S, Anims.attack_S },
         { Directions.N, Anims.attack_N },

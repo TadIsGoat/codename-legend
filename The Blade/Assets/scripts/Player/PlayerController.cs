@@ -1,12 +1,10 @@
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : Core
 {
     #region VARIABLES
 
     [Header("References")]
-    private Rigidbody2D rb;
-    private CharacterAnimator characterAnimator;
     private Weapon weapon;
 
     [HideInInspector] public bool isAttacking;
@@ -19,7 +17,6 @@ public class PlayerController : MonoBehaviour
     [Range(1, 100)] public float runDeccel = 20f; //values outside of Range may be problematic
 
     [Header("States")]
-    [SerializeField] private State state;
     public IdleState idleState;
     public WalkState walkState;
     public AttackState attackState;
@@ -29,22 +26,18 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        characterAnimator = GetComponentInChildren<CharacterAnimator>();
         weapon = GetComponentInChildren<Weapon>();
     }
 
     private void Start()
     {
-        idleState.Setup(rb, this, characterAnimator);
-        walkState.Setup(rb, this, characterAnimator);
-        attackState.Setup(rb, this, characterAnimator);
-        state = idleState;
+        SetupInstances();
     }
 
     private void Update()
     {
         SetState();
-        state.Do();
+        stateMachine.state.Do();
     }
 
     private void FixedUpdate()
@@ -70,26 +63,17 @@ public class PlayerController : MonoBehaviour
 
     private void SetState()
     {
-        State oldState = state;
-
         if (isAttacking)
         {
-            state = attackState;
+            stateMachine.Set(attackState);
         }
         if (movementInput != Vector2.zero)
         {
-            state = walkState;
+            stateMachine.Set(walkState);
         }
         else
         {
-            state = idleState;
-        }
-
-        if (oldState != state || oldState.isComplete)
-        {
-            oldState.Exit();
-            state.Initialize();
-            state.Enter();
+            stateMachine.Set(idleState);
         }
     }
 }

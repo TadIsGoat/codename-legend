@@ -19,7 +19,7 @@ public class PlayerInput : MonoBehaviour
     {
         playerController.movementInput = moveAction.ReadValue<Vector2>();
 
-        if (attackAction.WasPerformedThisFrame()) 
+        if (attackAction.WasPerformedThisFrame())
         {
             if (Mouse.current != null)
             {

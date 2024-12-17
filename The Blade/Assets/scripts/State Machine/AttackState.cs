@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AttackState : State
@@ -6,7 +5,7 @@ public class AttackState : State
 
     public override void Enter()
     {
-        characterAnimator.SetAnimation(Data.attackAnims, Helper.GetDirection(playerController.movementInput, lastDirection, true));
+        characterAnimator.SetAnimation(data.attackAnims, directionSensor.GetDirection(rb.linearVelocity));
     }
 
     public override void Do()
