@@ -10,7 +10,7 @@ public class WalkState : State
 
     public override void Do()
     {
-        characterAnimator.SetAnimation(data.walkAnims, directionSensor.GetDirection(rb.linearVelocity)); //needs to be called over time cuz the direction can change more often than the state
+        characterAnimator.SetAnimation(data.walkAnims); //needs to be called over time cuz the direction can change more often than the state
 
         if (Mathf.Abs(rb.linearVelocity.x) < bufferValue && Mathf.Abs(rb.linearVelocity.y) < bufferValue)
         {

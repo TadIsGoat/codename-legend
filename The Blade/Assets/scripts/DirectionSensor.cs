@@ -2,10 +2,25 @@ using UnityEngine;
 
 public class DirectionSensor : MonoBehaviour
 {
-    public Data.Directions lastDirection;
+    [SerializeField] private Data.Directions lastDirection;
+    private Vector2 movement;
+    private Rigidbody rb;
 
-    public Data.Directions GetDirection(Vector2 movement)
+    public Data.Directions GetDirection()
     {
+        if (TryGetComponent<PlayerController>(out PlayerController playerController))
+        {
+            movement = playerController.movementInput;
+        }
+        else if(TryGetComponent<Rigidbody2D>(out Rigidbody2D rb))
+        {
+            movement = rb.linearVelocity;
+        }
+        else
+        {
+            Debug.Log("Something is really wrong with this object");
+        }
+
         const float bufferValue = 0.5f;
 
         if (movement.x > bufferValue && movement.y > bufferValue)

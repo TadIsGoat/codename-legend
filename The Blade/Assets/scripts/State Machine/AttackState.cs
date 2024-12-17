@@ -5,7 +5,7 @@ public class AttackState : State
 
     public override void Enter()
     {
-        characterAnimator.SetAnimation(data.attackAnims, directionSensor.GetDirection(rb.linearVelocity));
+        characterAnimator.SetAnimation(data.attackAnims);
     }
 
     public override void Do()

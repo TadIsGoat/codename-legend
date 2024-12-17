@@ -3,7 +3,6 @@ using UnityEngine;
 
 public abstract class State : MonoBehaviour
 {
-
     protected Core core;
     protected Rigidbody2D rb => core.rb;
     protected CharacterAnimator characterAnimator => core.characterAnimator;

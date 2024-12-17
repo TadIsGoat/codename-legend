@@ -5,6 +5,7 @@ public class CharacterAnimator : MonoBehaviour
 {
     private Animator animator;
     private SpriteRenderer spriteRenderer;
+    private DirectionSensor directionSensor;
     private string currentAnim;
     private string newAnim;
 
@@ -12,10 +13,13 @@ public class CharacterAnimator : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        directionSensor = GetComponentInParent<DirectionSensor>();
     }
 
-    public void SetAnimation(Dictionary<Data.Directions, Data.Anims> animDic, Data.Directions direction)
+    public void SetAnimation(Dictionary<Data.Directions, Data.Anims> animDic)
     {
+        Data.Directions direction = directionSensor.GetDirection();
+
         if (direction == Data.Directions.W || direction == Data.Directions.NW || direction == Data.Directions.SW)
         {
             if (!spriteRenderer.flipX)

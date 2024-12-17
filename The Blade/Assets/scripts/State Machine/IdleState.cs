@@ -4,7 +4,7 @@ public class IdleState : State
 {
     public override void Enter()
     {
-        characterAnimator.SetAnimation(data.idleAnims, directionSensor.GetDirection(rb.linearVelocity));
+        characterAnimator.SetAnimation(data.idleAnims);
     }
 
     public override void Do()
