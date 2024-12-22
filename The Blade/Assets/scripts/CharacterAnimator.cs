@@ -16,11 +16,11 @@ public class CharacterAnimator : MonoBehaviour
         directionSensor = GetComponentInParent<DirectionSensor>();
     }
 
-    public void SetAnimation(Dictionary<Data.Directions, Data.Anims> animDic)
+    public void SetAnimation(Dictionary<CharacterData.Directions, CharacterData.Anims> animDic)
     {
-        Data.Directions direction = directionSensor.GetDirection();
+        CharacterData.Directions direction = directionSensor.GetDirection();
 
-        if (direction == Data.Directions.W || direction == Data.Directions.NW || direction == Data.Directions.SW)
+        if (direction == CharacterData.Directions.W || direction == CharacterData.Directions.NW || direction == CharacterData.Directions.SW)
         {
             if (!spriteRenderer.flipX)
             {

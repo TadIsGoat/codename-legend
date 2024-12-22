@@ -2,11 +2,16 @@ using UnityEngine;
 
 public class DirectionSensor : MonoBehaviour
 {
-    [SerializeField] private Data.Directions lastDirection;
+    [SerializeField] private CharacterData.Directions lastDirection;
     private Vector2 movement;
     private Rigidbody rb;
 
-    public Data.Directions GetDirection()
+    private void Start()
+    {
+        SetDirection(CharacterData.Directions.S);
+    }
+
+    public CharacterData.Directions GetDirection()
     {
         if (TryGetComponent<PlayerController>(out PlayerController playerController))
         {
@@ -25,41 +30,41 @@ public class DirectionSensor : MonoBehaviour
 
         if (movement.x > bufferValue && movement.y > bufferValue)
         {
-            lastDirection = Data.Directions.NE;
+            lastDirection = CharacterData.Directions.NE;
         }
         else if (movement.x < -bufferValue && movement.y > bufferValue)
         {
-            lastDirection = Data.Directions.NW;
+            lastDirection = CharacterData.Directions.NW;
         }
         else if (movement.x > bufferValue && movement.y < -bufferValue)
         {
-            lastDirection = Data.Directions.SE;
+            lastDirection = CharacterData.Directions.SE;
         }
         else if (movement.x < -bufferValue && movement.y < -bufferValue)
         {
-            lastDirection = Data.Directions.SW;
+            lastDirection = CharacterData.Directions.SW;
         }
         else if (movement.x > bufferValue)
         {
-            lastDirection = Data.Directions.E;
+            lastDirection = CharacterData.Directions.E;
         }
         else if (movement.x < -bufferValue)
         {
-            lastDirection = Data.Directions.W;
+            lastDirection = CharacterData.Directions.W;
         }
         else if (movement.y > bufferValue)
         {
-            lastDirection = Data.Directions.N;
+            lastDirection = CharacterData.Directions.N;
         }
         else if (movement.y < -bufferValue)
         {
-            lastDirection = Data.Directions.S;
+            lastDirection = CharacterData.Directions.S;
         }
         return lastDirection;
     }
 
-    private void Start()
+    public void SetDirection(CharacterData.Directions newDirection) 
     {
-        lastDirection = Data.Directions.S;
+        lastDirection = newDirection;
     }
 }

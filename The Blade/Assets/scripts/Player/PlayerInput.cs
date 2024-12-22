@@ -23,7 +23,7 @@ public class PlayerInput : MonoBehaviour
         {
             if (Mouse.current != null)
             {
-                playerController.Attack(cam.ScreenToWorldPoint(Mouse.current.position.ReadValue()));
+                playerController.attackTask = playerController.Attack(cam.ScreenToWorldPoint(Mouse.current.position.ReadValue()));
             }
             else
             {

@@ -452,7 +452,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 0
-      m_TileSpriteIndex: 27
+      m_TileSpriteIndex: 33
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -1062,7 +1062,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 0
-      m_TileSpriteIndex: 33
+      m_TileSpriteIndex: 27
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -1848,7 +1848,7 @@ Tilemap:
   - m_RefCount: 2
     m_Data: {fileID: -531746645, guid: 2c6bc68152368894bab66eb7d5203c9d, type: 3}
   - m_RefCount: 1
-    m_Data: {fileID: -3008838913562897396, guid: 2c6bc68152368894bab66eb7d5203c9d, type: 3}
+    m_Data: {fileID: -1816917089, guid: 1c62e872ac5d46b4690ee61718186013, type: 3}
   - m_RefCount: 11
     m_Data: {fileID: 685365128, guid: 2c6bc68152368894bab66eb7d5203c9d, type: 3}
   - m_RefCount: 4
@@ -1860,7 +1860,7 @@ Tilemap:
   - m_RefCount: 4
     m_Data: {fileID: 1086877628, guid: 1c62e872ac5d46b4690ee61718186013, type: 3}
   - m_RefCount: 1
-    m_Data: {fileID: -1816917089, guid: 1c62e872ac5d46b4690ee61718186013, type: 3}
+    m_Data: {fileID: -3008838913562897396, guid: 2c6bc68152368894bab66eb7d5203c9d, type: 3}
   m_TileMatrixArray:
   - m_RefCount: 153
     m_Data:
@@ -2288,6 +2288,7 @@ GameObject:
   m_Component:
   - component: {fileID: 613411560}
   - component: {fileID: 613411561}
+  - component: {fileID: 613411562}
   m_Layer: 0
   m_Name: weapon
   m_TagString: Untagged
@@ -2323,14 +2324,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a41977c7e0216c44ba3733745a147c12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &613411562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 613411559}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa11107149604414b9c04cf4feffd51f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   damage: 20
   knockback: 20
   attackHitBox:
     serializedVersion: 2
-    x: 0.46
-    y: -0.37
-    width: 1.68
-    height: 0.86
+    x: 0.52
+    y: -0.48
+    width: 1.27
+    height: 0.93
 --- !u!1 &1041294705
 GameObject:
   m_ObjectHideFlags: 0
@@ -2652,12 +2665,7 @@ MonoBehaviour:
   characterAnimator: {fileID: 491953780}
   directionSensor: {fileID: 1663175494}
   data: {fileID: 1663175495}
-  isAttacking: 0
   movementInput: {x: 0, y: 0}
-  maxRunSpeed: 10
-  lerpValue: 0.5
-  runAccel: 35
-  runDeccel: 20
   idleState: {fileID: 2106337355}
   walkState: {fileID: 164447345}
   attackState: {fileID: 1066433560}
@@ -2686,6 +2694,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc208baa2f6537546a7d62111dfa9741, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxRunSpeed: 10
+  lerpValue: 0.5
+  runAccel: 35
+  runDeccel: 20
 --- !u!1 &1690159922
 GameObject:
   m_ObjectHideFlags: 0
@@ -2939,6 +2951,7 @@ GameObject:
   - component: {fileID: 2143423229}
   - component: {fileID: 2143423233}
   - component: {fileID: 2143423232}
+  - component: {fileID: 2143423234}
   m_Layer: 0
   m_Name: weapon_renderer
   m_TagString: Untagged
@@ -2971,7 +2984,7 @@ Animator:
   m_GameObject: {fileID: 2143423228}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b3b930bf16794fd44b63fc4ee04f783a, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -3038,6 +3051,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2143423234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2143423228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e325270a3d2ffff41b6398fcbe8aa8f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

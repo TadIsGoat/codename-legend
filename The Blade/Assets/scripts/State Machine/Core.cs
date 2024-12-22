@@ -7,7 +7,7 @@ public abstract class Core : MonoBehaviour
     public CharacterAnimator characterAnimator;
     public StateMachine stateMachine;
     public DirectionSensor directionSensor;
-    public Data data;
+    public CharacterData data;
 
     public void SetupInstances()
     {

@@ -1,20 +1,17 @@
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class PlayerController : Core
 {
     #region VARIABLES
 
-    [Header("References")]
-    private Weapon weapon;
+    private WeaponController weaponController;
 
-    [HideInInspector] public bool isAttacking;
+    [Header("Attack")]
+    public Task attackTask; //to store the task so we can check if its running later
 
     [Header("Movement")]
     public Vector2 movementInput; //input from PlayerInput script
-    public float maxRunSpeed = 10f;
-    [Tooltip("If the target speed is gonna fall closer to current velocity or (max run speed * input)")][Range(0, 1)] public float lerpValue = 0.5f;
-    [Range(1, 100)] public float runAccel = 35f; //values outside of Range may be problematic
-    [Range(1, 100)] public float runDeccel = 20f; //values outside of Range may be problematic
 
     [Header("States")]
     public IdleState idleState;
@@ -25,8 +22,7 @@ public class PlayerController : Core
 
     private void Awake()
     {
-        rb = GetComponent<Rigidbody2D>();
-        weapon = GetComponentInChildren<Weapon>();
+        weaponController = GetComponentInChildren<WeaponController>();
     }
 
     private void Start()
@@ -43,10 +39,10 @@ public class PlayerController : Core
     private void FixedUpdate()
     {
         #region WASD MOVEMENT
-        Vector2 targetSpeed = movementInput * maxRunSpeed;
-        targetSpeed = Vector2.Lerp(rb.linearVelocity, targetSpeed, lerpValue);
+        Vector2 targetSpeed = movementInput * data.maxRunSpeed;
+        targetSpeed = Vector2.Lerp(rb.linearVelocity, targetSpeed, data.lerpValue);
 
-        Vector2 accelRate = new Vector2(Mathf.Abs(targetSpeed.x) > 1 ? runAccel : runDeccel, Mathf.Abs(targetSpeed.y) > 1 ? runAccel : runDeccel);
+        Vector2 accelRate = new Vector2(Mathf.Abs(targetSpeed.x) > 1 ? data.runAccel : data.runDeccel, Mathf.Abs(targetSpeed.y) > 1 ? data.runAccel : data.runDeccel);
 
         Vector2 speedDiff = targetSpeed - rb.linearVelocity;
         Vector2 movement = speedDiff * accelRate;
@@ -55,19 +51,23 @@ public class PlayerController : Core
         #endregion
     }
 
-    public void Attack(Vector2 mousePos)
+    public async Task Attack(Vector2 mousePos)
     {
-        //weapon needs to have separate animator, the player attack anim needs to be set to last till weapon attack anim is playing and everything needs to fucking work
-        StartCoroutine(weapon.Attack(mousePos));
+        Vector2 playerRelativeMousePos = (mousePos - (Vector2)transform.position).normalized; //so the position aimed for is relative to the player object, not the world center | .normalized to zaokrouhlit correctly
+        float angle = Mathf.Atan2(playerRelativeMousePos.y, playerRelativeMousePos.x) * Mathf.Rad2Deg;
+        directionSensor.SetDirection(Helper.AngleToDirection(angle));
+
+        await weaponController.Attack(angle, playerRelativeMousePos); //.GetAwaiter().GetResult() in need of this void to be sync
+        await Task.Yield();
     }
 
     private void SetState()
     {
-        if (isAttacking)
+        if (attackTask != null && attackTask.Status == TaskStatus.WaitingForActivation) //idk why, but instead of "TaskStatus.Running" u need to put this bullshit here to check if the task running
         {
             stateMachine.Set(attackState);
         }
-        if (movementInput != Vector2.zero)
+        else if (movementInput != Vector2.zero)
         {
             stateMachine.Set(walkState);
         }
