@@ -18,6 +18,7 @@ public class CharacterAnimator : MonoBehaviour
 
     public void SetAnimation(Dictionary<CharacterData.Directions, CharacterData.Anims> animDic)
     {
+        #region FLIPPING
         CharacterData.Directions direction = directionSensor.GetDirection();
 
         if (direction == CharacterData.Directions.W || direction == CharacterData.Directions.NW || direction == CharacterData.Directions.SW)
@@ -34,6 +35,7 @@ public class CharacterAnimator : MonoBehaviour
                 spriteRenderer.flipX = false;
             }
         }
+        #endregion
 
         newAnim = animDic[direction].ToString();
 

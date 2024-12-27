@@ -7,10 +7,8 @@ public class PlayerController : Core
 
     private WeaponController weaponController;
 
-    [Header("Attack")]
-    public Task attackTask; //to store the task so we can check if its running later
+    [HideInInspector] public Task attackTask; //to store the task so we can check if its running later
 
-    [Header("Movement")]
     public Vector2 movementInput; //input from PlayerInput script
 
     [Header("States")]
@@ -55,9 +53,12 @@ public class PlayerController : Core
     {
         Vector2 playerRelativeMousePos = (mousePos - (Vector2)transform.position).normalized; //so the position aimed for is relative to the player object, not the world center | .normalized to zaokrouhlit correctly
         float angle = Mathf.Atan2(playerRelativeMousePos.y, playerRelativeMousePos.x) * Mathf.Rad2Deg;
-        directionSensor.SetDirection(Helper.AngleToDirection(angle));
+        directionSensor.SetDirection(Helper.AngleToDirection(angle)); //set new direction depending on the angle
 
-        await weaponController.Attack(angle, playerRelativeMousePos); //.GetAwaiter().GetResult() in need of this void to be sync
+        //do the weapon attack task
+        weaponController.attackTask = weaponController.Attack(angle, playerRelativeMousePos);
+        await weaponController.attackTask;
+
         await Task.Yield();
     }
 
