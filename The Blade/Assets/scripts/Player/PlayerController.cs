@@ -8,7 +8,6 @@ public class PlayerController : Core
     private WeaponController weaponController;
 
     [HideInInspector] public Task attackTask; //to store the task so we can check if its running later
-
     public Vector2 movementInput; //input from PlayerInput script
 
     [Header("States")]
