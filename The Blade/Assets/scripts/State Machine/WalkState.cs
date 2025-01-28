@@ -5,13 +5,13 @@ using UnityEngine;
 public class WalkState : State
 {
     Animator animator;
+    [SerializeField][Tooltip("What speed is considered as idle")] private float bufferValue = 0.5f;
 
     private void Awake()
     {
         animator = GetComponentInParent<Animator>();
     }
 
-    [SerializeField][Tooltip("What speed is considered as idle")] private float bufferValue = 0.5f;
     public override void Enter()
     {
 
