@@ -9,6 +9,7 @@ public class WeaponController : MonoBehaviour
 {
     private WeaponData weaponData;
     private WeaponAnimator weaponAnimator;
+    private SpriteRenderer spriteRenderer;
     [SerializeField]private WeaponData.States state;
     public Task attackTask;
 
@@ -21,6 +22,8 @@ public class WeaponController : MonoBehaviour
     {
         weaponData = GetComponent<WeaponData>();
         weaponAnimator = GetComponentInChildren<WeaponAnimator>();
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        spriteRenderer.enabled = false;
 
         try
         {
@@ -40,6 +43,7 @@ public class WeaponController : MonoBehaviour
 
     public async Task Attack(float _angle, Vector2 playerRelativeMousePos)
     {
+        spriteRenderer.enabled = true;
         angle = _angle; //needs to happen before stateChange
 
         var stateChanged = WaitForStateChange(WeaponData.States.attack);
@@ -75,6 +79,7 @@ public class WeaponController : MonoBehaviour
             Debug.Log($"The anim is not in the attackPoint dictionary\nException: {e}");
         }
 
+        spriteRenderer.enabled = false;
         await Task.Yield();
     }
 

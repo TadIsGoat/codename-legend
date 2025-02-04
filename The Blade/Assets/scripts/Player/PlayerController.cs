@@ -1,8 +1,15 @@
 using System.Threading.Tasks;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerController : Core
 {
+    /*
+     * DEAR PROGRAMMER,
+     * when this script was made, only me and god knew how it works.
+     * So in case you want to change something, good luck.
+     */
+
     #region VARIABLES
 
     private WeaponController weaponController;
@@ -49,7 +56,7 @@ public class PlayerController : Core
     }
 
     public async Task Attack(Vector2 mousePos)
-    {
+    {       
         Vector2 playerRelativeMousePos = (mousePos - (Vector2)transform.position).normalized; //so the position aimed for is relative to the player object, not the world center | .normalized to zaokrouhlit correctly
         float angle = Mathf.Atan2(playerRelativeMousePos.y, playerRelativeMousePos.x) * Mathf.Rad2Deg;
         directionSensor.SetDirection(Helper.AngleToDirection(angle)); //set new direction depending on the angle
