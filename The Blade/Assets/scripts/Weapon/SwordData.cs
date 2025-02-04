@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class WeaponData : MonoBehaviour //object-specific variables are set here
 {
+    [SerializeField] public bool hideOnIdle;
     [SerializeField] public float damage = 20f;
     [SerializeField] public float knockback = 20f;
     [SerializeField][Tooltip("obviously že Vector2 by taky fungoval, ale Rect má lepší visualization")] public Rect attackHitBox;
@@ -39,9 +40,9 @@ public class WeaponData : MonoBehaviour //object-specific variables are set here
 
     };
 
-    public Dictionary<string, float> attackPoints = new Dictionary<string, float>() //time of the impact
+    public Dictionary<string, float> attackPoints = new Dictionary<string, float>() //time of the impact (s); u need to syns these with the animations in anim tab
     {
-        {Anims.attack1.ToString(), 0.6f },
+        {Anims.attack1.ToString(), 0.55f },
     };
 
     private void OnDrawGizmosSelected()

@@ -2337,6 +2337,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa11107149604414b9c04cf4feffd51f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hideOnIdle: 0
   damage: 20
   knockback: 20
   attackHitBox:
@@ -2670,6 +2671,7 @@ MonoBehaviour:
   idleState: {fileID: 2106337355}
   walkState: {fileID: 164447345}
   attackState: {fileID: 1066433560}
+  currentSpeed: {x: 0, y: 0}
 --- !u!114 &1663175494
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,26 +1,33 @@
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Unity.VisualScripting;
 using UnityEngine;
 
+/*
+ * DEAR PROGRAMMER,
+ * when this script was made, only me and god knew how it works.
+ * So in case you want to change something, good luck.
+ * 
+ * AMOUNT OF HOURS WASTED HERE: ~20
+ */
+
 public class PlayerController : Core
 {
-    /*
-     * DEAR PROGRAMMER,
-     * when this script was made, only me and god knew how it works.
-     * So in case you want to change something, good luck.
-     */
-
     #region VARIABLES
 
     private WeaponController weaponController;
-
     [HideInInspector] public Task attackTask; //to store the task so we can check if its running later
+
+    [Space(17)]
     public Vector2 movementInput; //input from PlayerInput script
 
     [Header("States")]
     public IdleState idleState;
     public WalkState walkState;
     public AttackState attackState;
+
+    [Header("dee · buh · guhng")]
+    [SerializeField] private float currentSpeed;
+    [SerializeField] private Vector2 targetSpeed;
 
     #endregion
 
@@ -36,6 +43,8 @@ public class PlayerController : Core
 
     private void Update()
     {
+        currentSpeed = rb.linearVelocity.magnitude; //dee · buh · guhng
+
         SetState();
         stateMachine.state.Do();
     }
@@ -43,10 +52,13 @@ public class PlayerController : Core
     private void FixedUpdate()
     {
         #region WASD MOVEMENT
-        Vector2 targetSpeed = movementInput * data.maxRunSpeed;
+        targetSpeed = movementInput * data.maxRunSpeed;
         targetSpeed = Vector2.Lerp(rb.linearVelocity, targetSpeed, data.lerpValue);
 
-        Vector2 accelRate = new Vector2(Mathf.Abs(targetSpeed.x) > 1 ? data.runAccel : data.runDeccel, Mathf.Abs(targetSpeed.y) > 1 ? data.runAccel : data.runDeccel);
+        Vector2 accelRate = new Vector2(
+            Mathf.Abs(targetSpeed.x) > data.maxRunSpeed * 0.1f ? data.runAccel : data.runDeccel,
+            Mathf.Abs(targetSpeed.y) > data.maxRunSpeed * 0.1f ? data.runAccel : data.runDeccel
+        );
 
         Vector2 speedDiff = targetSpeed - rb.linearVelocity;
         Vector2 movement = speedDiff * accelRate;
@@ -56,9 +68,12 @@ public class PlayerController : Core
     }
 
     public async Task Attack(Vector2 mousePos)
-    {       
+    {
+        //CONVERTING MOUSE POSITION TO ANGLE
         Vector2 playerRelativeMousePos = (mousePos - (Vector2)transform.position).normalized; //so the position aimed for is relative to the player object, not the world center | .normalized to zaokrouhlit correctly
         float angle = Mathf.Atan2(playerRelativeMousePos.y, playerRelativeMousePos.x) * Mathf.Rad2Deg;
+
+        //MANIPULATING THE PLAYER CHARACTER
         directionSensor.SetDirection(Helper.AngleToDirection(angle)); //set new direction depending on the angle
 
         //do the weapon attack task
