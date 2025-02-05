@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public static class Helper
 {
     public static CharacterData.Directions AngleToDirection(float angle)

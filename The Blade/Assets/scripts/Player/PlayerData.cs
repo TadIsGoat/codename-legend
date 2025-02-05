@@ -3,7 +3,9 @@ using UnityEngine;
 
 public class CharacterData : MonoBehaviour //object-specific variables are set here
 {
+    [Header("Movement")]
     [SerializeField] public float maxRunSpeed = 10f;
+    [SerializeField] public float deccelTreshhold = 0.1f;
     [SerializeField][Range(1, 100)][Tooltip("values outside of Range may be problematic")] public float runAccel = 35f;
     [SerializeField][Range(1, 100)][Tooltip("values outside of Range may be problematic")] public float runDeccel = 1f;
     [SerializeField][Range(0, 1)][Tooltip("If the target speed is gonna fall closer to current velocity or (max run speed * input)")] public float lerpValue  = 0.5f;

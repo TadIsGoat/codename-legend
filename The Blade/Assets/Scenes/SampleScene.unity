@@ -2337,7 +2337,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa11107149604414b9c04cf4feffd51f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hideOnIdle: 0
+  hideOnIdle: 1
   damage: 20
   knockback: 20
   attackHitBox:
@@ -2346,6 +2346,7 @@ MonoBehaviour:
     y: -0.49
     width: 1.63
     height: 0.93
+  attackForce: 20
 --- !u!1 &1041294705
 GameObject:
   m_ObjectHideFlags: 0
@@ -2531,10 +2532,10 @@ GameObject:
   - component: {fileID: 1663175489}
   - component: {fileID: 1663175488}
   - component: {fileID: 1663175493}
-  - component: {fileID: 1663175492}
-  - component: {fileID: 1663175491}
-  - component: {fileID: 1663175494}
   - component: {fileID: 1663175495}
+  - component: {fileID: 1663175494}
+  - component: {fileID: 1663175491}
+  - component: {fileID: 1663175492}
   m_Layer: 0
   m_Name: base_player
   m_TagString: Untagged
@@ -2671,7 +2672,9 @@ MonoBehaviour:
   idleState: {fileID: 2106337355}
   walkState: {fileID: 164447345}
   attackState: {fileID: 1066433560}
-  currentSpeed: {x: 0, y: 0}
+  currentState: {fileID: 0}
+  currentSpeed: 0
+  targetSpeed: {x: 0, y: 0}
 --- !u!114 &1663175494
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2698,9 +2701,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxRunSpeed: 10
-  lerpValue: 0.5
+  deccelTreshhold: 0.1
   runAccel: 35
   runDeccel: 20
+  lerpValue: 0.5
 --- !u!1 &1690159922
 GameObject:
   m_ObjectHideFlags: 0
