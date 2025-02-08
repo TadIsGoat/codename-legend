@@ -18,6 +18,10 @@ public class WeaponController : MonoBehaviour
     private Rect attackRect;
     private float angle;
 
+    //combo vars
+    [SerializeField] public float lastAttackTime;
+    [SerializeField] private int combo = 0;
+
     private void Awake()
     {
         weaponData = GetComponent<WeaponData>();
@@ -39,7 +43,17 @@ public class WeaponController : MonoBehaviour
     private void Update()
     {
         SetState();
-        weaponAnimator.SetAnimation(angle, state);
+
+        if (state == WeaponData.States.attack)
+        {
+            weaponAnimator.SetAnimation(angle, state, combo);
+        }
+        else
+        {
+            weaponAnimator.SetAnimation(angle, state);
+        }
+
+        lastAttackTime -= Time.deltaTime;
     }
 
     public async Task Attack(float _angle, Vector2 playerRelativeMousePos)
@@ -47,6 +61,17 @@ public class WeaponController : MonoBehaviour
         angle = _angle; //needs to happen before stateChange
 
         await WaitForStateChange(WeaponData.States.attack); //need to wait till the state machine realizes that we wanna attack
+
+        #region combo shit
+        if (lastAttackTime > 0 && combo < WeaponData.attackAnims.Count - 1)
+        {
+            combo++;
+        }
+        else
+        {
+            combo = 0;
+        }
+        #endregion
 
         spriteRenderer.enabled = true;
 
@@ -78,6 +103,8 @@ public class WeaponController : MonoBehaviour
         {
             Debug.Log($"The anim is not in the attackPoint dictionary\nException: {e}");
         }
+
+        lastAttackTime = weaponData.comboTreshhold + weaponAnimator.GetAnimLength();
 
         if (weaponData.hideOnIdle)
             spriteRenderer.enabled = false;

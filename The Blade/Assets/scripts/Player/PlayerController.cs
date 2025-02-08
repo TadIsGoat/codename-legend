@@ -99,7 +99,7 @@ public class PlayerController : Core
             directionSensor.SetDirection(Helper.AngleToDirection(angle));
             weaponController.attackTask = weaponController.Attack(angle, playerRelativeMousePos);
             rb.linearVelocity = Vector2.zero;
-            rb.AddForce((Vector2)transform.position + playerRelativeMousePos * weaponData.attackForce, ForceMode2D.Impulse);
+            rb.AddForce((Vector2)transform.position + playerRelativeMousePos * weaponData.attackMovement, ForceMode2D.Impulse);
             #endregion
 
             await weaponController.attackTask;

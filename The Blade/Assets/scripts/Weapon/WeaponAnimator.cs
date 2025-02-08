@@ -11,8 +11,6 @@ public class WeaponAnimator : MonoBehaviour
     private string currentAnim;
     private string newAnim;
 
-    //bool facingLeft = false;
-
     private void Awake()
     {
         weaponData = GetComponentInParent<WeaponData>();
@@ -21,9 +19,9 @@ public class WeaponAnimator : MonoBehaviour
         directionSensor = GetComponentInParent<DirectionSensor>();
     }
 
-    public void SetAnimation(float angle, WeaponData.States state)
+    public void SetAnimation(float angle, WeaponData.States state, int combo = 0)
     {
-        #region FLIPPING
+        #region flipping
         CharacterData.Directions direction = directionSensor.GetDirection();
 
         if (direction == CharacterData.Directions.W || direction == CharacterData.Directions.NW || direction == CharacterData.Directions.SW)
@@ -41,19 +39,10 @@ public class WeaponAnimator : MonoBehaviour
             }
         }
         #endregion
-        
-        /*if (Mathf.Abs(angle) > 90 && facingLeft == false)
-        {
-            facingLeft = !facingLeft;
-            Vector3 scale = transform.localScale;
-            scale.x *= -1;
-            scale.y *= -1;
-            transform.localScale = scale;
-        }*/
 
         List<WeaponData.Anims> animList = weaponData.animLists[state];
 
-        newAnim = animList[0].ToString();
+        newAnim = animList[combo].ToString();
 
         if (currentAnim != newAnim)
         {
