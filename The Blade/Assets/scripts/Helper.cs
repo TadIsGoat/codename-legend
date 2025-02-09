@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public static class Helper
@@ -23,5 +24,13 @@ public static class Helper
             return CharacterData.Directions.S;         // South (270°)
         else // angle >= 292.5 && angle < 337.5
             return CharacterData.Directions.SE;        // South-East (315°)
+    }
+
+    public enum SceneList
+    {
+        MainMenu,
+        BaseScene,
+        persistentObjects,
+
     }
 }
