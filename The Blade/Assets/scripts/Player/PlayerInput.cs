@@ -6,6 +6,7 @@ public class PlayerInput : MonoBehaviour
     private PlayerController playerController;
     private InputAction moveAction;
     private InputAction attackAction;
+    [SerializeField] private Camera cam;
 
     private void Awake()
     {
@@ -18,11 +19,11 @@ public class PlayerInput : MonoBehaviour
     {
         playerController.movementInput = moveAction.ReadValue<Vector2>();
 
-        if (attackAction.WasPerformedThisFrame()) 
+        if (attackAction.WasPerformedThisFrame())
         {
             if (Mouse.current != null)
             {
-                StartCoroutine(playerController.Attack(Mouse.current.position.ReadValue()));
+                playerController.attackTask = playerController.Attack(cam.ScreenToWorldPoint(Mouse.current.position.ReadValue()));
             }
             else
             {

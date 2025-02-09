@@ -1,13 +1,14 @@
 using System.Collections.Generic;
+using UnityEngine;
 
-public static class Data //PLAYER DATA
+public class CharacterData : MonoBehaviour //object-specific variables are set here
 {
-    public enum States //dont forget to add a new switch case in character animator when adding new animations
-    {
-        idle,
-        walking,
-        attacking,
-    }
+    [Header("Movement")]
+    [SerializeField] public float maxRunSpeed = 10f;
+    [SerializeField] public float deccelTreshhold = 0.1f;
+    [SerializeField][Range(1, 100)][Tooltip("values outside of Range may be problematic")] public float runAccel = 35f;
+    [SerializeField][Range(1, 100)][Tooltip("values outside of Range may be problematic")] public float runDeccel = 1f;
+    [SerializeField][Range(0, 1)][Tooltip("If the target speed is gonna fall closer to current velocity or (max run speed * input)")] public float lerpValue  = 0.5f;
 
     public enum Directions
     {
@@ -42,7 +43,7 @@ public static class Data //PLAYER DATA
         attack_NE,
     }
 
-    public static readonly Dictionary<Directions, Anims> idleAnims = new Dictionary<Directions, Anims>
+    public Dictionary<Directions, Anims> idleAnims = new Dictionary<Directions, Anims>
     {
         { Directions.S, Anims.idle_S },
         { Directions.N, Anims.idle_N },
@@ -54,7 +55,7 @@ public static class Data //PLAYER DATA
         { Directions.NW, Anims.idle_E }, //because we can just flip the EAST anim
     };
 
-    public static readonly Dictionary<Directions, Anims> walkAnims = new Dictionary<Directions, Anims>
+    public Dictionary<Directions, Anims> walkAnims = new Dictionary<Directions, Anims>
     {
         { Directions.S, Anims.walk_S },
         { Directions.N, Anims.walk_N },
@@ -66,7 +67,7 @@ public static class Data //PLAYER DATA
         { Directions.NW, Anims.walk_NE }, //because we can just flip the EAST anim
     };
 
-    public static readonly Dictionary<Directions, Anims> attackAnims = new Dictionary<Directions, Anims>
+    public Dictionary<Directions, Anims> attackAnims = new Dictionary<Directions, Anims>
     {
         { Directions.S, Anims.attack_S },
         { Directions.N, Anims.attack_N },

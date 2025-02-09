@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class HealthScript : MonoBehaviour
 {
-    private Rigidbody2D rb;
     [SerializeField] private float currentHealth = 0;
     [SerializeField] private float maxHealth = 100;
+    Rigidbody2D rb;
 
     private void Awake()
     {
