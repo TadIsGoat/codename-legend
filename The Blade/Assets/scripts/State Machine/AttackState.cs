@@ -5,7 +5,7 @@ public class AttackState : State
 
     public override void Enter()
     {
-        characterAnimator.SetAnimation(data.attackAnims);
+        characterAnimator.SetAnimation(data.attackAnims, true);
     }
 
     public override void Do()

@@ -11,9 +11,9 @@ public class DirectionSensor : MonoBehaviour
         SetDirection(CharacterData.Directions.S);
     }
 
-    public CharacterData.Directions GetDirection()
+    public CharacterData.Directions GetDirection(bool preferRB = false) //preferRB in case the player cant give input, but we still wanna GetDirection()
     {
-        if (TryGetComponent<PlayerController>(out PlayerController playerController))
+        if (TryGetComponent<PlayerController>(out PlayerController playerController) && preferRB == false)
         {
             movement = playerController.movementInput;
         }
