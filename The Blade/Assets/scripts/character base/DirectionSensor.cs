@@ -26,7 +26,7 @@ public class DirectionSensor : MonoBehaviour
             Debug.Log("Something is really wrong with this object");
         }
 
-        const float bufferValue = 0.5f;
+        const float bufferValue = 0.5f; //we can ignore really tiiiny movement
 
         if (movement.x > bufferValue && movement.y > bufferValue)
         {

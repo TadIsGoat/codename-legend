@@ -13,8 +13,8 @@ public class MainMenuManager : MonoBehaviour
 
     public void StartGame()
     {
-        scenesToLoad.Add(SceneManager.LoadSceneAsync(Helper.SceneList.persistentObjects.ToString())); //loads scene in the main thread
-        scenesToLoad.Add(SceneManager.LoadSceneAsync(Helper.SceneList.BaseScene.ToString(), LoadSceneMode.Additive)); //loads scene in the background
+        scenesToLoad.Add(SceneManager.LoadSceneAsync(GameData.SceneList.persistentObjects.ToString())); //loads scene in the main thread
+        scenesToLoad.Add(SceneManager.LoadSceneAsync(GameData.SceneList.BaseScene.ToString(), LoadSceneMode.Additive)); //loads scene in the background
 
         StartCoroutine(UpdateLoadingBar());
     }
