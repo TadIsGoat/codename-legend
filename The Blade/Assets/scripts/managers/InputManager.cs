@@ -6,17 +6,16 @@ public class InputManager : MonoBehaviour
 {
     [SerializeField] private PlayerController playerController;
     [SerializeField] private Camera cam;
+    [SerializeField] private GameManager gameManager;
     private InputAction moveAction;
     private InputAction attackAction;
     private PlayerInput playerInput;
-    private GameManager gameManager;
 
     private void Awake()
     {
         moveAction = InputSystem.actions.FindAction("Move");
         attackAction = InputSystem.actions.FindAction("Attack");
         playerInput = GetComponent<PlayerInput>();
-        gameManager = GetComponent<GameManager>();
 
         playerInput.actions.FindActionMap(GameData.ActionMapList.Persistent.ToString()).Enable();
     }

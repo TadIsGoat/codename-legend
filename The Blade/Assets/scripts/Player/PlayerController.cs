@@ -91,6 +91,7 @@ public class PlayerController : Core
             canInput = false;
 
             #region calculations
+            //If pythagoras found the right angle, you can find the right baddie. Stay motivated gang
             Vector2 playerRelativeMousePos = (mousePos - (Vector2)transform.position).normalized;
             float angle = Mathf.Atan2(playerRelativeMousePos.y, playerRelativeMousePos.x) * Mathf.Rad2Deg;
             #endregion

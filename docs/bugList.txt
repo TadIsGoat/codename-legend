@@ -1,0 +1,2 @@
+UI - pause menu - main buttons - po reOpenu občas nefachají tak jak mají a nikdo neví proč 
+	(možná je to speed issue, takže by stačilo předělat ShowMenu() na task a čekat na resety???)
