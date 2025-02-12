@@ -6,7 +6,7 @@ public class WeaponData : MonoBehaviour //object-specific variables are set here
     [SerializeField] public bool hideOnIdle;
     [SerializeField] public float damage = 20f;
     [SerializeField] public float knockback = 20f;
-    [SerializeField][Tooltip("obviously že Vector2 by taky fungoval, ale Rect má lepší visualization")] public Rect attackHitBox;
+    [SerializeField][Tooltip("obviously ï¿½e Vector2 by taky fungoval, ale Rect mï¿½ lepï¿½ï¿½ visualization")] public Rect attackHitBox;
     [SerializeField][Tooltip("How much the character will move on attack")][Range(2, 100)] public float attackMovement = 20f;
     [SerializeField] public float comboTreshhold = 1f;
 

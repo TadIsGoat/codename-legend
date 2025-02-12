@@ -402,6 +402,50 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &262586092
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 262586093}
+  - component: {fileID: 262586094}
+  m_Layer: 0
+  m_Name: LevelLoader
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &262586093
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 262586092}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 977825294}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &262586094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 262586092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8763094a9421ab44b7e8edd7bed117d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &408193628
 GameObject:
   m_ObjectHideFlags: 0
@@ -1219,6 +1263,7 @@ Transform:
   m_Children:
   - {fileID: 408193629}
   - {fileID: 1512214373}
+  - {fileID: 262586093}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1034110830
@@ -2146,7 +2191,6 @@ GameObject:
   - component: {fileID: 1663175489}
   - component: {fileID: 1663175488}
   - component: {fileID: 1663175493}
-  - component: {fileID: 1663175495}
   - component: {fileID: 1663175494}
   - component: {fileID: 1663175491}
   m_Layer: 0
@@ -2267,7 +2311,7 @@ MonoBehaviour:
   rb: {fileID: 1663175489}
   characterAnimator: {fileID: 491953780}
   directionSensor: {fileID: 1663175494}
-  data: {fileID: 1663175495}
+  data: {fileID: 11400000, guid: ce110ef181ca1c245a94454cb11d22c4, type: 2}
   movementInput: {x: 0, y: 0}
   idleState: {fileID: 2106337355}
   walkState: {fileID: 164447345}
@@ -2288,23 +2332,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lastDirection: 1
---- !u!114 &1663175495
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1663175487}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc208baa2f6537546a7d62111dfa9741, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxRunSpeed: 10
-  deccelTreshhold: 0.1
-  runAccel: 35
-  runDeccel: 20
-  lerpValue: 0.5
 --- !u!1 &1807734784
 GameObject:
   m_ObjectHideFlags: 0

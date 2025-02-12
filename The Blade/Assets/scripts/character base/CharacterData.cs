@@ -1,7 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterData : MonoBehaviour //object-specific variables are set here
+[CreateAssetMenu(fileName = "PlayerData", menuName = "ScriptableObjects/PlayerData", order = 1)]
+public class CharacterData : ScriptableObject //object-specific variables are set here
 {
     [Header("Movement")]
     [SerializeField] public float maxRunSpeed = 10f;
