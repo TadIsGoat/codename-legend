@@ -14,6 +14,8 @@ public class PauseMenuScript : MonoBehaviour
 
     */
 
+    [SerializeField] private EventSystem eventSystem;
+
     [Header("Button animation")]
     [SerializeField] private float animLength = 0.1f;
     [SerializeField] private Vector2 smallSize; //450, 85
