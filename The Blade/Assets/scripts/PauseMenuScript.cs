@@ -54,6 +54,7 @@ public class PauseMenuScript : MonoBehaviour
         foreach (var item in screens.Values) { //because when the menu is set to active, all the screens get set to active
             item.gameObject.SetActive(false);
         }
+        EventSystem.current.SetSelectedGameObject(buttonSkills.gameObject);
         OnButtonSelect(buttonSkills);
     }
 
