@@ -338,7 +338,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.5283019, g: 0.067283735, b: 0.23814245, a: 0}
+  m_BackGroundColor: {r: 0.9339623, g: 0, b: 0.34825718, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -1114,15 +1114,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: Legend of the Blade
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 59232b9eb341610419116979c8373d4b, type: 2}
-  m_sharedMaterial: {fileID: 7571404476641077639, guid: 59232b9eb341610419116979c8373d4b, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 1c655e032d89cab43b10d58bd01c29cb, type: 2}
+  m_sharedMaterial: {fileID: 7571404476641077639, guid: 1c655e032d89cab43b10d58bd01c29cb, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
