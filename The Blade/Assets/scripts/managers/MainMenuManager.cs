@@ -1,6 +1,7 @@
 using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -8,29 +9,23 @@ using UnityEngine.UI;
 public class MainMenuManager : MonoBehaviour
 {
     [SerializeField] private Image loadingBar;
+    [SerializeField] private SceneLoader sceneLoader;
 
-    private List<AsyncOperation> scenesToLoad = new List<AsyncOperation>();
 
     public void StartGame()
     {
-        scenesToLoad.Add(SceneManager.LoadSceneAsync(GameData.SceneList.persistentObjects.ToString())); //loads scene in the main thread
-        scenesToLoad.Add(SceneManager.LoadSceneAsync(GameData.SceneList.BaseScene.ToString(), LoadSceneMode.Additive)); //loads scene in the background
+        sceneLoader.LoadScene(GameData.SceneList.persistentObjects.ToString(), false);
+        sceneLoader.LoadScene(GameData.SceneList.BaseScene.ToString());
 
         StartCoroutine(UpdateLoadingBar());
     }
 
     private IEnumerator UpdateLoadingBar()
     {
-        float progress = 0f;
-
-        for (int i = 0; i < scenesToLoad.Count; i++)
+        while (sceneLoader.ReturnProgress() > 0 && sceneLoader.ReturnProgress() < 1)
         {
-            while (!scenesToLoad[i].isDone)
-            {
-                progress += scenesToLoad[i].progress;
-                loadingBar.fillAmount = progress / scenesToLoad.Count;
-                yield return null;
-            }
+            loadingBar.fillAmount = sceneLoader.ReturnProgress();
+            yield return null; //wait for the next frame
         }
     }
 
