@@ -1,4 +1,5 @@
 using NUnit.Framework;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
@@ -12,15 +13,17 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] private SceneLoader sceneLoader;
 
 
-    public void StartGame()
+    public async void StartGame()
     {
+        await sceneLoader.Transition();
+
         sceneLoader.LoadScene(GameData.SceneList.persistentObjects.ToString(), false);
         sceneLoader.LoadScene(GameData.SceneList.BaseScene.ToString());
 
         StartCoroutine(UpdateLoadingBar());
     }
 
-    private IEnumerator UpdateLoadingBar()
+    private IEnumerator UpdateLoadingBar() //nobody can currently see the bar, cuz of the transition, we need to make the bar react somehow before the transition and dum this
     {
         while (sceneLoader.ReturnProgress() > 0 && sceneLoader.ReturnProgress() < 1)
         {
