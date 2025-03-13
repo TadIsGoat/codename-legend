@@ -20,20 +20,21 @@ public class MainMenuManager : MonoBehaviour
         sceneLoader.LoadScene(GameData.SceneList.persistentObjects.ToString(), false);
         sceneLoader.LoadScene(GameData.SceneList.BaseScene.ToString());
 
-        StartCoroutine(UpdateLoadingBar());
-    }
-
-    private IEnumerator UpdateLoadingBar() //nobody can currently see the bar, cuz of the transition, we need to make the bar react somehow before the transition and dum this
-    {
-        while (sceneLoader.ReturnProgress() > 0 && sceneLoader.ReturnProgress() < 1)
-        {
-            loadingBar.fillAmount = sceneLoader.ReturnProgress();
-            yield return null; //wait for the next frame
-        }
+        //StartCoroutine(UpdateLoadingBar());
     }
 
     public void QuitGame()
     {
         Application.Quit();
     }
+
+    /*  //nobody can currently see the bar, cuz of the transition, we need to make the bar react somehow before the transition and dum this
+    private IEnumerator UpdateLoadingBar()
+    {
+        while (sceneLoader.ReturnProgress() > 0 && sceneLoader.ReturnProgress() < 1)
+        {
+            loadingBar.fillAmount = sceneLoader.ReturnProgress();
+            yield return null; //wait for the next frame
+        }
+    }*/
 }

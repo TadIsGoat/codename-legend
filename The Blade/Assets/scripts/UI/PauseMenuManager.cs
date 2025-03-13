@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class PauseMenuScript : MonoBehaviour
+public class PauseMenuManager : MonoBehaviour
 {
     /*
 
@@ -49,7 +49,7 @@ public class PauseMenuScript : MonoBehaviour
         this.gameObject.SetActive(true);
 
         foreach (var item in screens.Keys) { //we need to reset all
-            StartCoroutine(ButtonResizeAnim(item, smallSize, 0f, defaultColor)); //anim time 0 coz we are just resetting so we dont need the animation
+            StartCoroutine(UIHelper.ButtonResizeAnim(item, smallSize, 0f, defaultColor)); //anim time 0 coz we are just resetting so we dont need the animation
         }
         foreach (var item in screens.Values) { //because when the menu is set to active, all the screens get set to active
             item.gameObject.SetActive(false);
@@ -64,29 +64,15 @@ public class PauseMenuScript : MonoBehaviour
 
     #region Buttons
     public void OnButtonSelect(Button button) {
-        StartCoroutine(ButtonResizeAnim(button, bigSize, animLength, highlightedColor));
+        StartCoroutine(UIHelper.ButtonResizeAnim(button, bigSize, animLength, highlightedColor));
         screens[button].gameObject.SetActive(true);
     }
 
     public void OnButtonDeselect(Button button){
-        StartCoroutine(ButtonResizeAnim(button, smallSize, animLength, defaultColor));
+        StartCoroutine(UIHelper.ButtonResizeAnim(button, smallSize, animLength, defaultColor));
         screens[button].gameObject.SetActive(false);
     }
 
-    IEnumerator ButtonResizeAnim/*Contains color reset too*/(Button button, Vector2 targetSize, float resizeTime, Color color) {
-        RectTransform rect = button.GetComponent<RectTransform>();
-        Vector2 originalSize = rect.sizeDelta;
-        float elapsed = 0f;
 
-        button.image.color = color;
-        
-        while (elapsed < resizeTime) 
-        {
-            elapsed += Time.deltaTime;
-            rect.sizeDelta = Vector2.Lerp(originalSize, targetSize, elapsed / resizeTime);
-            yield return null;
-        }
-        rect.sizeDelta = targetSize;
-    }
     #endregion
 }

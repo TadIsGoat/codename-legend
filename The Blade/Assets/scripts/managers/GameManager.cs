@@ -3,17 +3,17 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public bool gamePause { get; private set; } = false;
-    [SerializeField] PauseMenuScript pauseMenuScript;
+    [SerializeField] PauseMenuManager pauseMenuManager;
 
     public void Pause()
     {
         if (!gamePause) {
             gamePause = true;
-            pauseMenuScript.ShowMenu();
+            pauseMenuManager.ShowMenu();
         }
         else {
             gamePause = false;
-            pauseMenuScript.HideMenu();
+            pauseMenuManager.HideMenu();
         }
     }
 }

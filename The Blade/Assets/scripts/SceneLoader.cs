@@ -31,7 +31,8 @@ public class SceneLoader : MonoBehaviour
         await Task.Delay((int)animator.GetCurrentAnimatorStateInfo(0).length * 1000);
     }
 
-    public float ReturnProgress() //might be useless later
+    /* //might be useless later
+    public float ReturnProgress()
     {
         if (scenesToLoad.Count == 0) 
             return 1;
@@ -48,5 +49,5 @@ public class SceneLoader : MonoBehaviour
         progress /= scenesToLoad.Count;
 
         return progress;
-    }
+    }*/
 }

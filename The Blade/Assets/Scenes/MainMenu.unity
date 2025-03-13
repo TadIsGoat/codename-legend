@@ -287,7 +287,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loadingBar: {fileID: 947810342}
-  sceneLoader: {fileID: 262586094}
+  sceneLoader: {fileID: 0}
 --- !u!4 &168216137
 Transform:
   m_ObjectHideFlags: 0
@@ -303,17 +303,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1936570751}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &262586094 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7669056497731722727, guid: f05e4d514e8d6054a9a3b98985fd0666, type: 3}
-  m_PrefabInstance: {fileID: 5714890789746607484}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8763094a9421ab44b7e8edd7bed117d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &756615983
 GameObject:
   m_ObjectHideFlags: 0
@@ -1287,7 +1276,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7669056497731722727, guid: f05e4d514e8d6054a9a3b98985fd0666, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
