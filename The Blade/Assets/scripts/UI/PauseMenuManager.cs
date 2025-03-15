@@ -35,14 +35,21 @@ public class PauseMenuManager : MonoBehaviour
 
     private Dictionary<Button, Image> screens;
 
-    void Awake()
+    private void Awake()
     {
-        this.gameObject.SetActive(false);
         screens = new Dictionary<Button, Image>() {
             { buttonSkills, screenSkills},
             { buttonStats, screenStats},
             { buttonOptions, screenOptions},
         };
+    }
+
+    private void Start()
+    {
+        if (!this.gameObject.activeSelf) //shouldnt work but works, leave it like this
+        {
+            HideMenu();
+        }
     }
 
     public void ShowMenu() {
