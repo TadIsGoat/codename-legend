@@ -20,7 +20,7 @@ public class WalkState : State
     public override void Do()
     {
         characterAnimator.SetAnimation(data.walkAnims); //needs to be called over time cuz the direction can change more often than the state
-        //animator.speed = Mathf.Abs(math.max(rb.linearVelocityX, rb.linearVelocityY)) / data.maxRunSpeed; //tohle nikdy fungovat nebude, cuz rb velocity a maxRunSpeed je úplnì jinak odscalované
+        //animator.speed = Mathf.Abs(math.max(rb.linearVelocityX, rb.linearVelocityY)) / data.maxRunSpeed; //tohle nikdy fungovat nebude, cuz rb velocity a maxRunSpeed je ï¿½plnï¿½ jinak odscalovanï¿½
 
         if (Mathf.Abs(rb.linearVelocityX) < bufferValue && Mathf.Abs(rb.linearVelocityY) < bufferValue)
         {
