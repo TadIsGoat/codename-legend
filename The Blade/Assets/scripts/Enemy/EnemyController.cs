@@ -1,5 +1,6 @@
 using UnityEngine;
 
+//player has its own controller
 public class EnemyController : Core
 {
     [Header("States")]

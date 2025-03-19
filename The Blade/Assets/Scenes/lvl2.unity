@@ -1564,7 +1564,7 @@ MonoBehaviour:
   rb: {fileID: 1728020383}
   characterAnimator: {fileID: 1465341103}
   directionSensor: {fileID: 1728020380}
-  data: {fileID: 0}
+  data: {fileID: 11400000, guid: f4b0e01ebcca0614091be99fb7a3a712, type: 2}
   idleState: {fileID: 0}
   currentState: {fileID: 0}
   currentSpeed: 0

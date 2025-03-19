@@ -20,6 +20,7 @@ public abstract class State : MonoBehaviour
     {
         core = _core;
     }
+
     public void Initialize()
     {
         isComplete = false;

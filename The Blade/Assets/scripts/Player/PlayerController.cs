@@ -7,7 +7,7 @@ using UnityEngine;
  * when this script was made, only me and god knew how it works.
  * So in case you want to change something, good luck.
  * 
- * AMOUNT OF HOURS WASTED HERE: ~40
+ * AMOUNT OF HOURS WASTED HERE: ~50
  */
 
 public class PlayerController : Core

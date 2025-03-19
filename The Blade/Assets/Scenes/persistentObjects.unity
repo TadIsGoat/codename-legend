@@ -2205,7 +2205,6 @@ GameObject:
   - component: {fileID: 1663175493}
   - component: {fileID: 1663175494}
   - component: {fileID: 1663175491}
-  - component: {fileID: 1663175495}
   m_Layer: 0
   m_Name: base_player
   m_TagString: Untagged
@@ -2324,7 +2323,7 @@ MonoBehaviour:
   rb: {fileID: 1663175489}
   characterAnimator: {fileID: 491953780}
   directionSensor: {fileID: 1663175494}
-  data: {fileID: 1663175495}
+  data: {fileID: 11400000, guid: 2f5a77e7608cbc94db4df9bcd01cd079, type: 2}
   movementInput: {x: 0, y: 0}
   idleState: {fileID: 2106337355}
   walkState: {fileID: 164447345}
@@ -2345,23 +2344,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lastDirection: 1
---- !u!114 &1663175495
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1663175487}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc208baa2f6537546a7d62111dfa9741, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxRunSpeed: 10
-  deccelTreshhold: 0.1
-  runAccel: 35
-  runDeccel: 35
-  lerpValue: 0.5
 --- !u!1 &1807734784
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,7 +10,7 @@ public class WeaponController : MonoBehaviour
     private WeaponData weaponData;
     private WeaponAnimator weaponAnimator;
     private SpriteRenderer spriteRenderer;
-    [SerializeField]private WeaponData.States state;
+    [SerializeField] private WeaponData.States state;
     public Task attackTask;
 
     //calculation variables (need to be here coz of gizmos)
@@ -27,6 +27,7 @@ public class WeaponController : MonoBehaviour
         weaponData = GetComponent<WeaponData>();
         weaponAnimator = GetComponentInChildren<WeaponAnimator>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        
         if (weaponData.hideOnIdle)
             spriteRenderer.enabled = false;
 
