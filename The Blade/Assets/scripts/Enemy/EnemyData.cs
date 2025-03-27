@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "PlayerData", menuName = "ScriptableObjects/PlayerData", order = 1)]
-public class PlayerData : CharacterData //object-specific variables are set here
+[CreateAssetMenu(fileName = "EnemyData", menuName = "ScriptableObjects/EnemyData", order = 2)]
+public class EnemyData : CharacterData
 {
     public override Dictionary<Directions, Anims> idleAnims
     {
@@ -10,19 +10,19 @@ public class PlayerData : CharacterData //object-specific variables are set here
         set => base.idleAnims = value;
     }
 
-        public override Dictionary<Directions, Anims> walkAnims
+    public override Dictionary<Directions, Anims> walkAnims
     {
         get => base.walkAnims;
         set => base.walkAnims = value;
     }
 
-        public override Dictionary<Directions, Anims> attackAnims
+    public override Dictionary<Directions, Anims> attackAnims
     {
         get => base.attackAnims;
         set => base.attackAnims = value;
     }
 
-    public PlayerData()
+    public EnemyData()
     {
         idleAnims = new Dictionary<Directions, Anims>
         {

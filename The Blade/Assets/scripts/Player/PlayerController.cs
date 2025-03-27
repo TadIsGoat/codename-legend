@@ -32,7 +32,7 @@ public class PlayerController : Core
     [Header("dee · buh · guhng")]
     [SerializeField] private State currentState;
     [SerializeField] private float currentSpeed;
-    [SerializeField] private Vector2 targetSpeed;
+    [SerializeField] private Vector2 targetSpeed; //is here for dee · buh · guhng, but we need it
 
     #endregion
 
