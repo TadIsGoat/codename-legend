@@ -15,5 +15,5 @@ MonoBehaviour:
   maxRunSpeed: 10
   deccelTreshhold: 0.1
   runAccel: 35
-  runDeccel: 1
+  runDeccel: 35
   lerpValue: 0.5
