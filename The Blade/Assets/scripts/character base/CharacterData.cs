@@ -9,6 +9,7 @@ public abstract class CharacterData : ScriptableObject
     [SerializeField] [Range(1, 100)][Tooltip("values outside of Range may be problematic")] public float runAccel;
     [SerializeField] [Range(1, 100)][Tooltip("values outside of Range may be problematic")] public float runDeccel;
     [SerializeField] [Range(0, 1)][Tooltip("If the target speed is gonna fall closer to current velocity or (max run speed * input)")] public float lerpValue;
+    [SerializeField][Tooltip("What speed is considered as idle")] public float bufferValue = 0.5f;
 
     public enum Directions
     {

@@ -8,7 +8,7 @@ public class StateMachine
         {
             state?.Exit();
             state = newState;
-            state.Initialize();
+            state.Initialize(this);
             state.Enter();
         }
     }

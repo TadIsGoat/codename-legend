@@ -6,14 +6,10 @@ using UnityEngine;
  * DEAR PROGRAMMER,
  * when this script was made, only me and god knew how it works.
  * So in case you want to change something, good luck.
- * 
- * AMOUNT OF HOURS WASTED HERE: ~50
  */
 
 public class PlayerController : Core
 {
-    #region VARIABLES
-
     [Header("References")]
     private WeaponController weaponController;
     private WeaponData weaponData;
@@ -34,8 +30,6 @@ public class PlayerController : Core
     [SerializeField] private float currentSpeed;
     [SerializeField] private Vector2 targetSpeed; //is here for dee · buh · guhng, but we need it
 
-    #endregion
-
     private void Awake()
     {
         weaponController = GetComponentInChildren<WeaponController>();
@@ -45,18 +39,22 @@ public class PlayerController : Core
     private void Start()
     {
         SetupInstances();
+        stateMachine.Set(idleState, true);
     }
 
     private void Update()
     {
         currentSpeed = rb.linearVelocity.magnitude; //dee · buh · guhng
+        currentState = stateMachine.state; //dee · buh · guhng
 
         SetState();
-        stateMachine.state.Do();
+        stateMachine.state.DoBranch();
     }
 
     private void FixedUpdate()
     {
+        stateMachine.state.FixedDoBranch();
+
         #region WASD movement
         if (canInput)
         {
@@ -122,17 +120,14 @@ public class PlayerController : Core
         if (attackTask != null && attackLock.CurrentCount == 0)
         {
             stateMachine.Set(attackState);
-            currentState = attackState; //dee · buh · guhng
         }
-        else if (movementInput != Vector2.zero)
+        else if (Mathf.Abs(rb.linearVelocity.x) >= data.bufferValue || Mathf.Abs(rb.linearVelocity.y) >= data.bufferValue)
         {
             stateMachine.Set(walkState);
-            currentState = walkState; //dee · buh · guhng
         }
         else
         {
             stateMachine.Set(idleState);
-            currentState = idleState; //dee · buh · guhng
         }
     }
 }

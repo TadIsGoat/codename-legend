@@ -9,7 +9,7 @@ public class IdleState : State
 
     public override void Do()
     {
-        if (rb.linearVelocity != Vector2.zero)
+        if (Mathf.Abs(rb.linearVelocity.x) >= data.bufferValue || Mathf.Abs(rb.linearVelocity.y) >= data.bufferValue)
         {
             isComplete = true;
         }
