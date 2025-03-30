@@ -33,7 +33,7 @@ public class EnemyData : CharacterData
             { Directions.SE, Anims.idle_SE },
             { Directions.SW, Anims.idle_SE },
             { Directions.NE, Anims.idle_NE },
-            { Directions.NW, Anims.idle_E },
+            { Directions.NW, Anims.idle_NE },
         };
 
         walkAnims = new Dictionary<Directions, Anims>

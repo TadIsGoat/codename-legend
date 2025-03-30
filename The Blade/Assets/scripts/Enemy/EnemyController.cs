@@ -3,7 +3,7 @@ using UnityEngine;
 public class EnemyController : Core
 {
     [Header("States")]
-    PatrolState patrolState;
+    [SerializeField] private PatrolState patrolState;
 
     [Header("dee · buh · guhng")]
     [SerializeField] private float currentSpeed;

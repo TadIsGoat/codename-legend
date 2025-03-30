@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public static class Helper
 {
     public static CharacterData.Directions AngleToDirection(float angle)
@@ -22,13 +24,6 @@ public static class Helper
         else // angle >= 292.5 && angle < 337.5
             return CharacterData.Directions.SE;        // South-East (315�)
     }
-}
-
-
-
-
-
-/*
 
     public static Vector2 AngleToVector2(float angle)
     {
@@ -52,7 +47,13 @@ public static class Helper
         else // angle >= 292.5 && angle < 337.5
             return new Vector2(1, -1).normalized; // South-East (0.707, -0.707)
     }
+}
 
+
+
+
+
+/*
     public static Vector2 DirectionToVector2(Directions direction)
     {
         switch (direction)

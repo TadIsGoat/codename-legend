@@ -288,7 +288,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30828763c12e2fc40b968e9e678ac4cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bufferValue: 0.5
 --- !u!1 &240286885
 GameObject:
   m_ObjectHideFlags: 0
@@ -2343,6 +2342,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cdbab932a5128441bcb448aaa6e23cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: 2f5a77e7608cbc94db4df9bcd01cd079, type: 2}
   lastDirection: 1
 --- !u!1 &1807734784
 GameObject:
