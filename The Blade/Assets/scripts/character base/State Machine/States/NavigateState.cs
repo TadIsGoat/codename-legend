@@ -3,9 +3,10 @@ using UnityEngine;
 public class NavigateState : State
 {
     public Vector2 destination;
-    [SerializeField][Tooltip("How far from the destination is considered as \"there\"")] private float treshhold = 0.1f;
-    [SerializeField] protected float navigatingSpeed = 5f;
-    private Vector2 targetSpeed = Vector2.zero;
+    [SerializeField] private EnemyData enemyData;
+    [HideInInspector] private Vector2 targetSpeed = Vector2.zero;
+    public float speed;
+    public float treshhold;
 
     public override void Enter()
     {
@@ -19,12 +20,12 @@ public class NavigateState : State
             targetSpeed = Vector2.zero;
             isComplete = true;
         }
-        else 
+        else
         {
-            Vector2 playerRelativeDestination = (destination - (Vector2)transform.position).normalized;
-            float angle = Mathf.Atan2(playerRelativeDestination.y, playerRelativeDestination.x) * Mathf.Rad2Deg;
+            Vector2 RelativeDestination = (destination - (Vector2)transform.position).normalized;
+            float angle = Mathf.Atan2(RelativeDestination.y, RelativeDestination.x) * Mathf.Rad2Deg;
 
-            targetSpeed = Helper.AngleToVector2(angle) * navigatingSpeed;
+            targetSpeed = Helper.AngleToVector2(angle) * speed;
         }
     }
 
@@ -48,5 +49,10 @@ public class NavigateState : State
     public override void Exit()
     {
 
+    }
+
+    public void SetUp(float _speed, float _treshhold) { //Lidl contructor
+        speed = _speed;
+        treshhold = _treshhold;
     }
 }

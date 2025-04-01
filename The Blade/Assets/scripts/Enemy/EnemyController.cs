@@ -1,14 +1,13 @@
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class EnemyController : Core
 {
-    [SerializeField] private float detectionRadius = 5f;
-    [SerializeField][Tooltip("For how long will the enemy chase 1 object")] private float chaseTimer = 5f;
     private float lastSeenTime = 0f;
     private Collider2D lastSeen;
     private Collider2D justSeen;
-
-
+    [SerializeField] private EnemyData enemyData;
 
     [Header("States")]
     [SerializeField] private PatrolState patrolState;
@@ -16,6 +15,7 @@ public class EnemyController : Core
 
     [Header("dee · buh · guhng")]
     [SerializeField] private float currentSpeed;
+    [SerializeField] private State currentState;
 
     private void Start()
     {
@@ -26,15 +26,11 @@ public class EnemyController : Core
     private void Update()
     {
         currentSpeed = rb.linearVelocity.magnitude; //dee · buh · guhng
+        currentState = stateMachine.state; //dee · buh · guhng
 
         lastSeenTime -= Time.deltaTime;
 
-        CheckSurroundings();
-
-        if (lastSeenTime > 0 && justSeen.gameObject == lastSeen.gameObject) {
-            stateMachine.Set(fightState);
-            fightState.objectToAttack = lastSeen.gameObject;
-        }
+        SelectState();
 
         try
         {
@@ -51,17 +47,45 @@ public class EnemyController : Core
         stateMachine.state.FixedDoBranch();
     }
 
+    private void SelectState()
+    {
+        CheckSurroundings();
+
+        if (lastSeenTime > 0) {
+            stateMachine.Set(fightState);
+            fightState.objectToAttack = lastSeen.gameObject;
+        }
+        else 
+        {
+            stateMachine.Set(patrolState);
+        }
+    }
+
     private void CheckSurroundings() {
-        justSeen = Physics2D.OverlapCircle(transform.position, detectionRadius);
+        justSeen = Physics2D.OverlapCircle(transform.position, enemyData.detectionRadius);
 
         if (justSeen != null) {
-            lastSeen = justSeen;
-            lastSeenTime = chaseTimer;
+            /*if (justSeen == lastSeen) { //if we are seeing someyhing repeatedly - extend timer
+                lastSeenTime = chaseTimer;
+            }
+            else*/ if (enemyData.targetList.Contains(justSeen.gameObject.tag)) { //if we see something new
+                if (lastSeenTime <= 0) { //if we are not chasing anything, we can chase a new thing
+                    lastSeen = justSeen;
+                }
+                lastSeenTime = enemyData.chaseTimer;
+            }
         }
     }
 
     void OnDrawGizmosSelected()
     {
-        Gizmos.DrawWireSphere(transform.position, detectionRadius);
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(transform.position, enemyData.detectionRadius);
+
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, enemyData.destinationTreshhold);
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, enemyData.attackingRange);
     }
 }

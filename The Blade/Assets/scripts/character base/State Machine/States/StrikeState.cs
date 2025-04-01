@@ -1,9 +1,7 @@
 using UnityEngine;
 
-public class FightState : State
+public class StrikeState : State
 {
-    public GameObject objectToAttack;
-
     public override void Enter()
     {
 
