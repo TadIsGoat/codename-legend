@@ -19,8 +19,8 @@ public class FightState : State
             navigateState.destination = objectToAttack.transform.position;
 
             if (navigateState.isComplete){
+                strikeState.objectToAttack = objectToAttack;
                 stateMachine.Set(strikeState, true);
-                rb.linearVelocity = Vector2.zero;
             }
         }
         else if (stateMachine.state == strikeState) {

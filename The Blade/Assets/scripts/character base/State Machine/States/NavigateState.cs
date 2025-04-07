@@ -51,7 +51,7 @@ public class NavigateState : State
 
     }
 
-    public void SetUp(float _speed, float _treshhold) { //Lidl contructor
+    public void SetUp(float _speed, float _treshhold) { //Lidl constructor
         speed = _speed;
         treshhold = _treshhold;
     }

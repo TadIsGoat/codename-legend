@@ -20,6 +20,11 @@ public class EnemyData : CharacterData
     [SerializeField] public float navigatingSpeed = 5f;
     [SerializeField][Tooltip("How far from the destination is considered as \"there\"")] public float destinationTreshhold = 0.1f;
 
+    [Header("Strike")]
+    [SerializeField] public float damage = 20f;
+    [SerializeField] public float knockback = 20f;
+    [SerializeField][Tooltip("obviously �e Vector2 by taky fungoval, ale Rect m� lep�� visualization")] public Rect attackHitBox;
+    [SerializeField][Tooltip("How much the character will move on attack")][Range(2, 100)] public float attackMovement = 20f;
 
     public override Dictionary<Directions, Anims> idleAnims
     {

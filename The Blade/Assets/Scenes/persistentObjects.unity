@@ -254,7 +254,7 @@ GameObject:
   m_Component:
   - component: {fileID: 164447344}
   - component: {fileID: 164447345}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Walk
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -928,7 +928,7 @@ GameObject:
   - component: {fileID: 491953779}
   - component: {fileID: 491953778}
   - component: {fileID: 491953780}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: base_player_renderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1050,7 +1050,7 @@ GameObject:
   - component: {fileID: 613411560}
   - component: {fileID: 613411561}
   - component: {fileID: 613411562}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1422,7 +1422,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1041294706}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Behaviour
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1457,7 +1457,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1066433561}
   - component: {fileID: 1066433560}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Attack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2204,7 +2204,7 @@ GameObject:
   - component: {fileID: 1663175493}
   - component: {fileID: 1663175494}
   - component: {fileID: 1663175491}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: base_player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -3003,7 +3003,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2106337354}
   - component: {fileID: 2106337355}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Idle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3049,7 +3049,7 @@ GameObject:
   - component: {fileID: 2143423233}
   - component: {fileID: 2143423232}
   - component: {fileID: 2143423234}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: weapon_renderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
