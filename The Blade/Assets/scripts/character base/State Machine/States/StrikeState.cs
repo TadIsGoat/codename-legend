@@ -1,4 +1,3 @@
-using System;
 using System.Threading.Tasks;
 using UnityEngine;
 
@@ -64,7 +63,6 @@ public class StrikeState : State
                 Debug.Log("HealthScript missing");
             }
         }
-        #endregion
 
         rb.AddForce((Vector2)transform.position + relativeTarget * enemyData.attackMovement, ForceMode2D.Impulse);
 
@@ -75,6 +73,7 @@ public class StrikeState : State
         rb.linearVelocity = Vector2.zero;
 
         isComplete = true;
+        #endregion
     }
 
     private void OnDrawGizmosSelected()

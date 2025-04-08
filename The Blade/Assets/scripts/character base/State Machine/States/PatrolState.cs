@@ -1,6 +1,3 @@
-using System.Runtime.InteropServices.WindowsRuntime;
-using Unity.VisualScripting;
-using UnityEditor.EditorTools;
 using UnityEngine;
 
 public class PatrolState : State
