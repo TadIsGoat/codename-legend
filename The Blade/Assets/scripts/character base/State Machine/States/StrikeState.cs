@@ -64,7 +64,7 @@ public class StrikeState : State
             }
         }
 
-        rb.AddForce((Vector2)transform.position + relativeTarget * enemyData.attackMovement, ForceMode2D.Impulse);
+        //rb.AddForce((Vector2)transform.position + Helper.AngleToVector2(angle) * enemyData.attackMovement, ForceMode2D.Impulse);
 
         await Task.Delay(animator.GetCurrentAnimatorClipInfo(0).Length * 1000);
 

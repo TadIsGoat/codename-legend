@@ -24,7 +24,7 @@ public class EnemyData : CharacterData
     [SerializeField] public float damage = 20f;
     [SerializeField] public float knockback = 20f;
     [SerializeField][Tooltip("obviously �e Vector2 by taky fungoval, ale Rect m� lep�� visualization")] public Rect attackHitBox;
-    [SerializeField][Tooltip("How much the character will move on attack")][Range(2, 100)] public float attackMovement = 20f;
+    [SerializeField][Tooltip("How much the character will move on attack")][Range(0, 100)] public float attackMovement = 20f;
 
     public override Dictionary<Directions, Anims> idleAnims
     {
