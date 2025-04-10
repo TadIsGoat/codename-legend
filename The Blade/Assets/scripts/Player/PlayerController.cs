@@ -97,8 +97,7 @@ public class PlayerController : Core
             #region character manipulation
             rb.linearVelocity = Vector2.zero;
             weaponController.attackTask = weaponController.Attack(angle, playerRelativeMousePos);
-            //rb.AddForce((Vector2)transform.position + playerRelativeMousePos * weaponData.attackMovement, ForceMode2D.Impulse);
-            rb.AddForce((Vector2)transform.position + Helper.AngleToVector2(angle) * weaponData.attackMovement, ForceMode2D.Impulse);
+            rb.AddForce(Helper.AngleToVector2(angle) * weaponData.attackMovement, ForceMode2D.Impulse);
 
             #endregion
 

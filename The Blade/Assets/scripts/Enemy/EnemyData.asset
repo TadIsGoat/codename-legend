@@ -27,3 +27,12 @@ MonoBehaviour:
   idleTime: 1
   navigatingSpeed: 5
   destinationTreshhold: 0.57
+  damage: 20
+  knockback: 0
+  attackHitBox:
+    serializedVersion: 2
+    x: 0
+    y: -0.49
+    width: 1.27
+    height: 0.93
+  attackMovement: 19.7
