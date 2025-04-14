@@ -3,7 +3,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public bool gamePause { get; private set; } = false;
-    [SerializeField] PauseMenuManager pauseMenuManager;
+    [SerializeField][Tooltip("Can be missing in main menu")] PauseMenuManager pauseMenuManager;
 
     public void Pause()
     {
@@ -15,5 +15,10 @@ public class GameManager : MonoBehaviour
             gamePause = false;
             pauseMenuManager.HideMenu();
         }
+    }
+
+    public void Quit()
+    {
+        Application.Quit();
     }
 }

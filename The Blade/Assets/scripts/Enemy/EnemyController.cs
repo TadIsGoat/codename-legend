@@ -12,6 +12,7 @@ public class EnemyController : Core
     [Header("States")]
     [SerializeField] private PatrolState patrolState;
     [SerializeField] private FightState fightState;
+    [SerializeField] private NavigateState navigateState;
 
     [Header("dee · buh · guhng")]
     [SerializeField] private float currentSpeed;
@@ -83,9 +84,9 @@ public class EnemyController : Core
         Gizmos.DrawWireSphere(transform.position, enemyData.detectionRadius);
 
         Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(transform.position, enemyData.destinationTreshhold);
+        Gizmos.DrawWireSphere(transform.position, navigateState.destinationTreshhold);
 
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, enemyData.attackingRange);
+        Gizmos.DrawWireSphere(transform.position, fightState.attackingRange);
     }
 }

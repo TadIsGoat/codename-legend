@@ -1255,6 +1255,7 @@ MonoBehaviour:
   navigateState: {fileID: 1801070009}
   strikeState: {fileID: 1732882411}
   objectToAttack: {fileID: 0}
+  attackingRange: 0.8
 --- !u!1 &1105396317
 GameObject:
   m_ObjectHideFlags: 0
@@ -1607,6 +1608,7 @@ MonoBehaviour:
   enemyData: {fileID: 11400000, guid: a904e78b911718642ae821574511e88a, type: 2}
   patrolState: {fileID: 1748814039}
   fightState: {fileID: 507305096}
+  navigateState: {fileID: 1801070009}
   currentSpeed: 0
   currentState: {fileID: 0}
 --- !u!1 &1732882409
@@ -1656,6 +1658,16 @@ MonoBehaviour:
   enemyData: {fileID: 11400000, guid: a904e78b911718642ae821574511e88a, type: 2}
   animator: {fileID: 1465341104}
   objectToAttack: {fileID: 0}
+  attackDeccelChange: 100
+  damage: 20
+  knockback: 75
+  attackHitBox:
+    serializedVersion: 2
+    x: 0
+    y: -0.49
+    width: 1.01
+    height: 0.93
+  attackMovement: 1
 --- !u!1 &1748814037
 GameObject:
   m_ObjectHideFlags: 0
@@ -1704,6 +1716,8 @@ MonoBehaviour:
   navigateState: {fileID: 1801070009}
   anchor: {fileID: 458678999}
   enemyData: {fileID: 11400000, guid: a904e78b911718642ae821574511e88a, type: 2}
+  patrolRadius: 5
+  idleTime: 1
 --- !u!1 &1801070007
 GameObject:
   m_ObjectHideFlags: 0
@@ -1752,6 +1766,8 @@ MonoBehaviour:
   enemyData: {fileID: 11400000, guid: a904e78b911718642ae821574511e88a, type: 2}
   speed: 0
   treshhold: 0
+  navigatingSpeed: 5
+  destinationTreshhold: 0.1
 --- !u!1 &1857683030
 GameObject:
   m_ObjectHideFlags: 0
