@@ -13,7 +13,7 @@ public class PauseMenuManager : MonoBehaviour
     Highlighted button color: C6B7BE (198, 183, 190)
 
     */
-
+ 
     [SerializeField] private EventSystem eventSystem;
 
     [Header("Button animation")]

@@ -82,7 +82,7 @@ public class WeaponController : MonoBehaviour
             Vector2 attackCenter = (Vector2)transform.position + playerRelativeMousePos * weaponData.attackHitBox.width / 2f; //get the new center of the attack hitbox
             attackRect = new Rect(attackCenter - weaponData.attackHitBox.size / 2f, weaponData.attackHitBox.size); //get the new attack hitbox
 
-            await Task.Delay((int)weaponAnimator.GetAnimAttackTimePoint() * 1000); //wait for the hit in the anim
+            await Task.Delay((int)weaponAnimator.GetAnimAttackTimePoint() * GameData.animTimeMultiplier); //wait for the hit in the anim
 
             Collider2D[] hit = Physics2D.OverlapBoxAll(attackRect.center, weaponData.attackHitBox.size, angle, attackLayer);
             foreach (var target in hit)
@@ -97,7 +97,7 @@ public class WeaponController : MonoBehaviour
                 }
             }
 
-            await Task.Delay(((int)weaponAnimator.GetAnimLength() - (int)weaponAnimator.GetAnimAttackTimePoint()) * 1000); //wait for the rest of the anim
+            await Task.Delay(((int)weaponAnimator.GetAnimLength() - (int)weaponAnimator.GetAnimAttackTimePoint()) * GameData.animTimeMultiplier); //wait for the rest of the anim
             #endregion
         }
         catch (Exception e)

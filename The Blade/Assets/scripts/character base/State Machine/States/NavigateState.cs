@@ -7,6 +7,8 @@ public class NavigateState : State
     [HideInInspector] private Vector2 targetSpeed = Vector2.zero;
     public float speed;
     public float treshhold;
+    [SerializeField] public float navigatingSpeed = 5f;
+    [SerializeField][Tooltip("How far from the destination is considered as \"there\"")] public float destinationTreshhold = 0.1f;
 
     public override void Enter()
     {

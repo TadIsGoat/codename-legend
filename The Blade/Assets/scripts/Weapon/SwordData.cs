@@ -45,7 +45,7 @@ public class WeaponData : MonoBehaviour //object-specific variables are set here
 
     };
 
-    public Dictionary<string, float> attackPoints = new Dictionary<string, float>() //time of the impact (s); u need to syns these with the animations in anim tab
+    public Dictionary<string, float> attackPoints = new Dictionary<string, float>() //time of the impact (s); u need to sync these with the animations in anim tab
     {
         {Anims.attack1.ToString(), 0.1f },
         {Anims.attack2.ToString(), 0.1f },

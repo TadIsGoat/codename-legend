@@ -11340,7 +11340,6 @@ MonoBehaviour:
   navigateState: {fileID: 1089305359}
   anchor: {fileID: 458678999}
   enemyData: {fileID: 11400000, guid: a904e78b911718642ae821574511e88a, type: 2}
---- !u!1 &1907641907
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -11643,7 +11642,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1907641908}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2099623840
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -11690,7 +11688,6 @@ MonoBehaviour:
   enemyData: {fileID: 11400000, guid: a904e78b911718642ae821574511e88a, type: 2}
   animator: {fileID: 1408241073}
   objectToAttack: {fileID: 0}
---- !u!1 &2100734879
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -11720,10 +11717,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyData: {fileID: 11400000, guid: a904e78b911718642ae821574511e88a, type: 2}
-  navigateState: {fileID: 1395507002}
-  strikeState: {fileID: 605297402}
-  objectToAttack: {fileID: 0}
---- !u!4 &2100734881
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -11738,7 +11731,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1449610898}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2145909973
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

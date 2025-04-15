@@ -11,7 +11,7 @@ public class MainMenuManager : MonoBehaviour
 {
     [SerializeField] private Image loadingBar;
     [SerializeField] private SceneLoader sceneLoader;
-
+    [SerializeField] private GameManager gameManager;
 
     public async void StartGame()
     {
@@ -25,7 +25,7 @@ public class MainMenuManager : MonoBehaviour
 
     public void QuitGame()
     {
-        Application.Quit();
+        gameManager.Quit();
     }
 
     /*  //nobody can currently see the bar, cuz of the transition, we need to make the bar react somehow before the transition and dum this
