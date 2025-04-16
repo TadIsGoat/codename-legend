@@ -5,10 +5,8 @@ public class NavigateState : State
     public Vector2 destination;
     [SerializeField] private EnemyData enemyData;
     [HideInInspector] private Vector2 targetSpeed = Vector2.zero;
-    public float speed;
-    public float treshhold;
-    [SerializeField] public float navigatingSpeed = 5f;
-    [SerializeField][Tooltip("How far from the destination is considered as \"there\"")] public float destinationTreshhold = 0.1f;
+    public float destinationTreshhold {get; private set;} = 0f;
+    private float navigatingSpeed;
 
     public override void Enter()
     {
@@ -17,7 +15,7 @@ public class NavigateState : State
 
     public override void Do()
     {
-        if(Vector2.Distance(core.transform.position, destination) < treshhold)
+        if(Vector2.Distance(core.transform.position, destination) < destinationTreshhold)
         {
             targetSpeed = Vector2.zero;
             isComplete = true;
@@ -27,7 +25,7 @@ public class NavigateState : State
             Vector2 RelativeDestination = (destination - (Vector2)transform.position).normalized;
             float angle = Mathf.Atan2(RelativeDestination.y, RelativeDestination.x) * Mathf.Rad2Deg;
 
-            targetSpeed = Helper.AngleToVector2(angle) * speed;
+            targetSpeed = Helper.AngleToVector2(angle) * navigatingSpeed;
         }
     }
 
@@ -53,8 +51,8 @@ public class NavigateState : State
 
     }
 
-    public void SetUp(float _speed, float _treshhold) { //Lidl constructor
-        speed = _speed;
-        treshhold = _treshhold;
+    public void SetUp(float _navigatingSpeed, float _destinationTreshhold) {
+        destinationTreshhold = _destinationTreshhold;
+        navigatingSpeed = _navigatingSpeed;
     }
 }

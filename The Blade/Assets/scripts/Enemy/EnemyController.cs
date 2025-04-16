@@ -83,9 +83,6 @@ public class EnemyController : Core
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(transform.position, enemyData.detectionRadius);
 
-        Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(transform.position, navigateState.destinationTreshhold);
-
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, fightState.attackingRange);
     }

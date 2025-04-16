@@ -8,6 +8,7 @@ public class PatrolState : State
     [SerializeField] private EnemyData enemyData;
     [SerializeField][Tooltip("The range in which the character will be patrolling")][Range(0, 100)] public float patrolRadius = 5f;
     [SerializeField][Tooltip("How long will the character stay idle till it starts patrolling again")][Range(0, 10)] public float idleTime = 1f;
+    [SerializeField][Tooltip("How far from the destination is considered as \"there\"")] public float destinationTreshhold = 0.1f;
     public override void Enter()
     {
         GoToNext();
@@ -38,7 +39,7 @@ public class PatrolState : State
         float randomRadius = Mathf.Sqrt(Random.Range(0f, 1f)) * patrolRadius;
 
         navigateState.destination = new Vector2(anchor.position.x + randomRadius * Mathf.Cos(angle), anchor.position.y + randomRadius * Mathf.Sin(angle));
-        navigateState.SetUp(navigateState.navigatingSpeed, navigateState.destinationTreshhold);
+        navigateState.SetUp(data.walkSpeed, destinationTreshhold);
         Set(navigateState, true);
     }
 

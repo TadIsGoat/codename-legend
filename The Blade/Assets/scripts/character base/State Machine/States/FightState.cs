@@ -7,6 +7,7 @@ public class FightState : State
     [SerializeField] private StrikeState strikeState;
     public GameObject objectToAttack;
     [SerializeField][Tooltip("How close will the enemy get before striking")] public float attackingRange = 1f;
+    [SerializeField][Tooltip("How far from the destination is considered as \"there\"")] public float destinationTreshhold = 0.1f;
 
     public override void Enter()
     {

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: EnemyData
   m_EditorClassIdentifier: 
   maxRunSpeed: 8
+  walkSpeed: 4
   deccelTreshhold: 10
   runAccel: 20
   runDeccel: 20

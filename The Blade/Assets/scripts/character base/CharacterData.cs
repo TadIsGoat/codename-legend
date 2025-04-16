@@ -5,6 +5,7 @@ using UnityEngine;
 public abstract class CharacterData : ScriptableObject
 {
     [SerializeField] public float maxRunSpeed;
+    [SerializeField] public float walkSpeed;
     [SerializeField] public float deccelTreshhold;
     [SerializeField] [Range(1, 100)][Tooltip("values outside of Range may be problematic")] public float runAccel;
     [SerializeField] [Range(1, 100)][Tooltip("values outside of Range may be problematic")] public float runDeccel;
