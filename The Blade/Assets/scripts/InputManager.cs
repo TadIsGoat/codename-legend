@@ -10,6 +10,7 @@ public class InputManager : MonoBehaviour
     private InputAction moveAction;
     private InputAction attackAction;
     private PlayerInput playerInput;
+    public bool canInput = true;
 
     private void Awake()
     {
@@ -22,18 +23,23 @@ public class InputManager : MonoBehaviour
 
     private void Update()
     {
-        playerController.movementInput = moveAction.ReadValue<Vector2>();
+        if (canInput) {
+            playerController.movementInput = moveAction.ReadValue<Vector2>();
 
-        if (attackAction.WasPerformedThisFrame())
-        {
-            if (Mouse.current != null)
+            if (attackAction.WasPerformedThisFrame())
             {
-                playerController.attackTask = playerController.Attack(cam.ScreenToWorldPoint(Mouse.current.position.ReadValue()));
+                if (Mouse.current != null)
+                {
+                    playerController.Strike(cam.ScreenToWorldPoint(Mouse.current.position.ReadValue()));
+                }
+                else
+                {
+                    Debug.Log("Mouse not connected!");
+                }
             }
-            else
-            {
-                Debug.Log("Mouse not connected!");
-            }
+        }
+        else {
+            playerController.movementInput = Vector2.zero; //idk why this is here, but it needs to be here
         }
     }
     private void OnEnable() //enables the actions when the gameObject becomes active

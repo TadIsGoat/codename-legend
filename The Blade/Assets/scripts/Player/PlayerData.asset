@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: PlayerData
   m_EditorClassIdentifier: 
   maxRunSpeed: 10
+  walkSpeed: 0
   deccelTreshhold: 0.1
   runAccel: 35
   runDeccel: 35
   lerpValue: 0.5
+  bufferValue: 0.5

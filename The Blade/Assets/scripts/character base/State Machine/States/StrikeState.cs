@@ -3,43 +3,36 @@ using UnityEngine;
 
 public class StrikeState : State
 {
-    [SerializeField] private EnemyData enemyData;
     [SerializeField] private Animator animator;
-    private LayerMask attackLayer;
+    [SerializeField] private LayerMask attackLayer;
     private Rect attackRect;
     private Vector2 relativeTarget;
-    public GameObject objectToAttack;
+    public Task strikeTask;
+    private float angle;
+    [HideInInspector] public Vector2 target;
     [SerializeField] private float attackDeccelChange;
-
     [SerializeField] public float damage = 20f;
     [SerializeField] public float knockback = 20f;
     [SerializeField][Tooltip("obviously �e Vector2 by taky fungoval, ale Rect m� lep�� visualization")] public Rect attackHitBox;
     [SerializeField][Tooltip("How much the character will move on attack")][Range(0, 100)] public float attackMovement = 20f;
-
-    //need removement
-    public Task strikeTask;
-    private float angle;
+    [SerializeField][Tooltip("Not neccessery")] private WeaponController weaponController;
 
     public override void Enter()
     {
-        characterAnimator.SetAnimation(data.attackAnims);
+        characterAnimator.SetAnimation(data.attackAnims, true);
         rb.linearVelocity = Vector2.zero;
 
-        try
-        {
-            attackLayer = LayerMask.GetMask("Player");
-        }
-        catch
-        {
-            Debug.Log("Player layer mask not found");
-        }
-
         #region calcs
-        relativeTarget = ((Vector2)objectToAttack.transform.position - (Vector2)transform.position).normalized;
+        relativeTarget = (target - (Vector2)transform.position).normalized;
         angle = Mathf.Atan2(relativeTarget.y, relativeTarget.x) * Mathf.Rad2Deg;
         #endregion
 
         strikeTask = Strike(relativeTarget);
+
+        if (weaponController != null)
+        {
+            weaponController.attackTask = weaponController.Attack(angle, relativeTarget);
+        }
 
         rb.AddForce(Helper.AngleToVector2(angle) * attackMovement, ForceMode2D.Impulse);
 
@@ -82,6 +75,10 @@ public class StrikeState : State
 
         await Task.Delay(animator.GetCurrentAnimatorClipInfo(0).Length * GameData.animTimeMultiplier);
 
+        if (weaponController != null) { //if we have a weapon we wait for it to do its stuff
+            await weaponController.attackTask;
+        }
+
         await Task.Yield();
 
         rb.linearVelocity = Vector2.zero;
@@ -97,6 +94,12 @@ public class StrikeState : State
             Gizmos.color = Color.red;
             Gizmos.matrix = Matrix4x4.TRS(transform.position, Quaternion.Euler(0f, 0f, angle), Vector3.one);
             Gizmos.DrawWireCube(attackHitBox.center, attackRect.size);
+        }
+
+        if (!Application.isPlaying)
+        {
+            Gizmos.color = Color.white;
+            Gizmos.DrawWireCube(transform.parent.TransformPoint(attackHitBox.center), attackHitBox.size);
         }
     }
 }

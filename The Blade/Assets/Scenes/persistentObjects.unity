@@ -1044,6 +1044,66 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f46e15dc6ed562b4695fecd6c658f4ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &520189755
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 520189756}
+  - component: {fileID: 520189757}
+  m_Layer: 0
+  m_Name: Strike
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &520189756
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 520189755}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1041294706}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &520189757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 520189755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7d98d9eb0afa2c4eb5f49d37d5db870, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 491953778}
+  attackLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  target: {x: 0, y: 0}
+  attackDeccelChange: 0
+  damage: 20
+  knockback: 20
+  attackHitBox:
+    serializedVersion: 2
+    x: 0
+    y: -0.49
+    width: 1.31
+    height: 0.93
+  attackMovement: 20
+  weaponController: {fileID: 0}
 --- !u!1 &613411559
 GameObject:
   m_ObjectHideFlags: 0
@@ -1627,6 +1687,7 @@ Transform:
   - {fileID: 2106337354}
   - {fileID: 164447344}
   - {fileID: 1066433561}
+  - {fileID: 520189756}
   m_Father: {fileID: 1663175490}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1066433559
@@ -2032,6 +2093,7 @@ MonoBehaviour:
   playerController: {fileID: 1663175493}
   cam: {fileID: 138918920}
   gameManager: {fileID: 408193630}
+  canInput: 1
 --- !u!1 &1587946516
 GameObject:
   m_ObjectHideFlags: 0
@@ -2506,10 +2568,12 @@ MonoBehaviour:
   characterAnimator: {fileID: 491953780}
   directionSensor: {fileID: 1663175494}
   data: {fileID: 11400000, guid: 2f5a77e7608cbc94db4df9bcd01cd079, type: 2}
+  inputManager: {fileID: 1512214375}
   movementInput: {x: 0, y: 0}
   idleState: {fileID: 2106337355}
   walkState: {fileID: 164447345}
   attackState: {fileID: 1066433560}
+  strikeState: {fileID: 520189757}
   currentState: {fileID: 0}
   currentSpeed: 0
   targetSpeed: {x: 0, y: 0}

@@ -10,31 +10,19 @@ using UnityEngine;
 
 public class PlayerController : Core
 {
-    [Header("References")]
-    private WeaponController weaponController;
-    private WeaponData weaponData;
-
-    [Header("Class variables")]
+    [SerializeField] private InputManager inputManager;
     public Vector2 movementInput; //input from PlayerInput script
-    private bool canInput = true;
-    [HideInInspector] public Task attackTask; //to store the task so we can check if its running later
-    [HideInInspector] private static SemaphoreSlim attackLock = new SemaphoreSlim(1); //is this overkill? - yes; do I know what am I doing? - absolutely fucking not
 
     [Header("States")]
     public IdleState idleState;
     public WalkState walkState;
     public AttackState attackState;
+    public StrikeState strikeState;
 
     [Header("dee · buh · guhng")]
     [SerializeField] private State currentState;
     [SerializeField] private float currentSpeed;
     [SerializeField] private Vector2 targetSpeed; //is here for dee · buh · guhng, but we need it
-
-    private void Awake()
-    {
-        weaponController = GetComponentInChildren<WeaponController>();
-        weaponData = GetComponentInChildren<WeaponData>();
-    }
 
     private void Start()
     {
@@ -56,14 +44,8 @@ public class PlayerController : Core
         stateMachine.state.FixedDoBranch();
 
         #region WASD movement
-        if (canInput)
-        {
-            targetSpeed = movementInput * data.maxRunSpeed;
-        }
-        else
-        {
-            targetSpeed = Vector2.zero;
-        }
+
+        targetSpeed = movementInput * data.maxRunSpeed;
 
         targetSpeed = Vector2.Lerp(rb.linearVelocity, targetSpeed, data.lerpValue);
 
@@ -79,55 +61,30 @@ public class PlayerController : Core
         #endregion
     }
 
-    public async Task Attack(Vector2 mousePos)
+    public void Strike(Vector2 mousePos)
     {
-        if (!await attackLock.WaitAsync(0))
-            return;
-
-        try
-        {
-            canInput = false;
-
-            #region calculations
-            //If pythagoras found the right angle, you can find the right baddie. Stay motivated gang
-            Vector2 playerRelativeMousePos = (mousePos - (Vector2)transform.position).normalized;
-            float angle = Mathf.Atan2(playerRelativeMousePos.y, playerRelativeMousePos.x) * Mathf.Rad2Deg;
-            #endregion
-
-            #region character manipulation
-            rb.linearVelocity = Vector2.zero;
-            weaponController.attackTask = weaponController.Attack(angle, playerRelativeMousePos);
-            rb.AddForce(Helper.AngleToVector2(angle) * weaponData.attackMovement, ForceMode2D.Impulse);
-
-            #endregion
-
-            await weaponController.attackTask;
-        }
-        catch
-        {
-            Debug.Log("Something with attacking ain't right");
-        }
-        finally
-        {
-            attackLock.Release();
-            canInput = true;
-            await Task.Yield();
-        }
+        inputManager.canInput = false; //lock input when we start striking, unlock in SetState() when we check for strikeState completition
+        strikeState.target = mousePos;
+        stateMachine.Set(strikeState, true);
     }
 
     private void SetState()
     {
-        if (attackTask != null && attackLock.CurrentCount == 0)
+        if (stateMachine.state == strikeState)
         {
-            stateMachine.Set(attackState);
+            if (strikeState.isComplete) {
+                inputManager.canInput = true;
+                stateMachine.Set(idleState); //we gotta get out of this doommed state somehow ://
+            }
         }
-        else if (Mathf.Abs(rb.linearVelocity.x) >= data.bufferValue || Mathf.Abs(rb.linearVelocity.y) >= data.bufferValue)
-        {
-            stateMachine.Set(walkState);
-        }
-        else
-        {
-            stateMachine.Set(idleState);
+        else if (stateMachine.state != strikeState) {
+            if (Mathf.Abs(rb.linearVelocity.x) > data.bufferValue || Mathf.Abs(rb.linearVelocity.y) >= data.bufferValue)
+            {
+                stateMachine.Set(walkState);
+            }
+            else if (Mathf.Abs(rb.linearVelocityX) <= data.bufferValue && Mathf.Abs(rb.linearVelocityY) <= data.bufferValue) {
+                stateMachine.Set(idleState);
+            }
         }
     }
 }

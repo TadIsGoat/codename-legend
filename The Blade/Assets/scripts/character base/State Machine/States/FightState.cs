@@ -21,7 +21,7 @@ public class FightState : State
             navigateState.destination = objectToAttack.transform.position;
 
             if (navigateState.isComplete){
-                strikeState.objectToAttack = objectToAttack;
+                strikeState.target = objectToAttack.transform.position;
                 stateMachine.Set(strikeState, true);
             }
         }
