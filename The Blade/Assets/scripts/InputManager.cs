@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -30,7 +29,7 @@ public class InputManager : MonoBehaviour
             {
                 if (Mouse.current != null)
                 {
-                    playerController.Strike(cam.ScreenToWorldPoint(Mouse.current.position.ReadValue()));
+                    playerController.Attack(cam.ScreenToWorldPoint(Mouse.current.position.ReadValue()));
                 }
                 else
                 {

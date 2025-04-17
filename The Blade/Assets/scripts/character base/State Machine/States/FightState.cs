@@ -4,7 +4,7 @@ public class FightState : State
 {
     [SerializeField] private EnemyData enemyData;
     [SerializeField] private NavigateState navigateState;
-    [SerializeField] private StrikeState strikeState;
+    [SerializeField] private AttackState attackState;
     public GameObject objectToAttack;
     [SerializeField][Tooltip("How close will the enemy get before striking")] public float attackingRange = 1f;
     [SerializeField][Tooltip("How far from the destination is considered as \"there\"")] public float destinationTreshhold = 0.1f;
@@ -21,12 +21,12 @@ public class FightState : State
             navigateState.destination = objectToAttack.transform.position;
 
             if (navigateState.isComplete){
-                strikeState.target = objectToAttack.transform.position;
-                stateMachine.Set(strikeState, true);
+                attackState.target = objectToAttack.transform.position;
+                stateMachine.Set(attackState, true);
             }
         }
-        else if (stateMachine.state == strikeState) {
-            if (strikeState.isComplete) {
+        else if (stateMachine.state == attackState) {
+            if (attackState.isComplete) {
                 navigateState.SetUp(data.maxRunSpeed, attackingRange);
                 stateMachine.Set(navigateState);
             }

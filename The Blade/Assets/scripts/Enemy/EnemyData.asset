@@ -15,8 +15,8 @@ MonoBehaviour:
   maxRunSpeed: 8
   walkSpeed: 4
   deccelTreshhold: 10
-  runAccel: 20
-  runDeccel: 20
+  runAccel: 84.2
+  runDeccel: 70.5
   lerpValue: 0.5
   bufferValue: 0.5
   targetList:

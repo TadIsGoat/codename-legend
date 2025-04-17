@@ -4,11 +4,7 @@ using UnityEngine;
 public class WeaponData : MonoBehaviour //object-specific variables are set here
 {
     [SerializeField] public bool hideOnIdle;
-    [SerializeField] public float damage = 20f;
-    [SerializeField] public float knockback = 20f;
-    [SerializeField][Tooltip("obviously �e Vector2 by taky fungoval, ale Rect m� lep�� visualization")] public Rect attackHitBox;
-    [SerializeField][Tooltip("How much the character will move on attack")][Range(0, 100)] public float attackMovement = 20f;
-    [SerializeField] public float comboTreshhold = 1f;
+    [SerializeField][Tooltip("How long does it take to reset the combo")] public float comboTreshhold = 1f;
 
     public enum States //singular states
     {
@@ -47,17 +43,8 @@ public class WeaponData : MonoBehaviour //object-specific variables are set here
 
     public Dictionary<string, float> attackPoints = new Dictionary<string, float>() //time of the impact (s); u need to sync these with the animations in anim tab
     {
-        {Anims.attack1.ToString(), 0.1f },
-        {Anims.attack2.ToString(), 0.1f },
-        {Anims.attack3.ToString(), 0.1f },
+        {Anims.attack1.ToString(), 0f },
+        {Anims.attack2.ToString(), 0f },
+        {Anims.attack3.ToString(), 0f },
     };
-
-    private void OnDrawGizmosSelected()
-    {
-        if (!Application.isPlaying)
-        {
-            Gizmos.color = Color.white;
-            Gizmos.DrawWireCube(transform.parent.TransformPoint(attackHitBox.center), attackHitBox.size);
-        }
-    }
 }

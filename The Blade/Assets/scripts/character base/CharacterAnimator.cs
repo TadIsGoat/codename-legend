@@ -45,4 +45,8 @@ public class CharacterAnimator : MonoBehaviour
             currentAnim = newAnim;
         }
     }
+
+    public float GetAnimLength() {
+        return animator.GetCurrentAnimatorClipInfo(0).Length;
+    }
 }

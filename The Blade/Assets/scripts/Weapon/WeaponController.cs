@@ -1,9 +1,12 @@
-using System;
 using System.Collections;
 using System.Threading.Tasks;
-using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
-using UnityEngine.UIElements;
+
+/*
+ * DEAR PROGRAMMER,
+ * Keep in mind, that since this code had many itterations, it might be overcomplicated for what it's actually doing.
+ * Please rework it to a proper state if u have got the time.
+ */
 
 public class WeaponController : MonoBehaviour
 {
@@ -11,12 +14,8 @@ public class WeaponController : MonoBehaviour
     private WeaponAnimator weaponAnimator;
     private SpriteRenderer spriteRenderer;
     [SerializeField] private WeaponData.States state;
-    public Task attackTask;
-
-    //calculation variables (need to be here coz of gizmos)
-    private LayerMask attackLayer;
-    private Rect attackRect;
     private float angle;
+    public bool isAttacking {get; private set;} = false;
 
     //combo vars
     [SerializeField] public float lastAttackTime;
@@ -31,14 +30,6 @@ public class WeaponController : MonoBehaviour
         if (weaponData.hideOnIdle)
             spriteRenderer.enabled = false;
 
-        try
-        {
-            attackLayer = LayerMask.GetMask("Attackable");
-        }
-        catch
-        {
-            Debug.Log("Attackable layer mask not found");
-        }
     }
 
     private void Update()
@@ -57,11 +48,12 @@ public class WeaponController : MonoBehaviour
         lastAttackTime -= Time.deltaTime;
     }
 
-    public async Task Attack(float _angle, Vector2 playerRelativeMousePos)
+    public IEnumerator Attack(float _angle)
     {
+        isAttacking = true;
         angle = _angle; //needs to happen before stateChange
 
-        await WaitForStateChange(WeaponData.States.attack); //need to wait till the state machine realizes that we wanna attack
+        yield return new WaitUntil(() => state == WeaponData.States.attack);
 
         #region combo shit
         if (lastAttackTime > 0 && combo < WeaponData.attackAnims.Count - 1)
@@ -76,46 +68,19 @@ public class WeaponController : MonoBehaviour
 
         spriteRenderer.enabled = true;
 
-        try
-        {
-            #region ATTACK CODE
-            Vector2 attackCenter = (Vector2)transform.position + playerRelativeMousePos * weaponData.attackHitBox.width / 2f; //get the new center of the attack hitbox
-            attackRect = new Rect(attackCenter - weaponData.attackHitBox.size / 2f, weaponData.attackHitBox.size); //get the new attack hitbox
-
-            await Task.Delay((int)weaponAnimator.GetAnimAttackTimePoint() * GameData.animTimeMultiplier); //wait for the hit in the anim
-
-            Collider2D[] hit = Physics2D.OverlapBoxAll(attackRect.center, weaponData.attackHitBox.size, angle, attackLayer);
-            foreach (var target in hit)
-            {
-                try
-                {
-                    target.GetComponent<HealthScript>().TakeHit(weaponData.damage, weaponData.knockback, transform.position);
-                }
-                catch
-                {
-                    Debug.Log("HealthScript missing");
-                }
-            }
-
-            await Task.Delay(((int)weaponAnimator.GetAnimLength() - (int)weaponAnimator.GetAnimAttackTimePoint()) * GameData.animTimeMultiplier); //wait for the rest of the anim
-            #endregion
-        }
-        catch (Exception e)
-        {
-            Debug.Log($"The anim is not in the attackPoint dictionary\nException: {e}");
-        }
+        yield return new WaitForSeconds(weaponAnimator.GetAnimLength());
 
         lastAttackTime = weaponData.comboTreshhold + weaponAnimator.GetAnimLength();
 
         if (weaponData.hideOnIdle)
             spriteRenderer.enabled = false;
 
-        await Task.Yield();
+        isAttacking = false;
     }
 
     private void SetState()
     {
-        if (attackTask != null && attackTask.Status != TaskStatus.RanToCompletion)
+        if (isAttacking)
         {
             state = WeaponData.States.attack;
         }
@@ -123,24 +88,6 @@ public class WeaponController : MonoBehaviour
         {
             angle = 0;
             state = WeaponData.States.idle;
-        }
-    }
-
-    private async Task WaitForStateChange(WeaponData.States expectedState)
-    {
-        while (state != expectedState)
-        {
-            await Task.Yield();
-        }
-    }
-
-    private void OnDrawGizmosSelected()
-    {
-        if (attackRect.size != Vector2.zero && attackTask != null && attackTask.Status != TaskStatus.RanToCompletion) //to avoid trying to writeout the gizmo when not attacking
-        {
-            Gizmos.color = Color.red;
-            Gizmos.matrix = Matrix4x4.TRS(transform.position, Quaternion.Euler(0f, 0f, angle), Vector3.one);
-            Gizmos.DrawWireCube(weaponData.attackHitBox.center, attackRect.size);
         }
     }
 }

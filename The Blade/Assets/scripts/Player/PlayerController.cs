@@ -1,6 +1,4 @@
-﻿using System.Threading;
-using System.Threading.Tasks;
-using UnityEngine;
+﻿using UnityEngine;
 
 /*
  * DEAR PROGRAMMER,
@@ -17,7 +15,6 @@ public class PlayerController : Core
     public IdleState idleState;
     public WalkState walkState;
     public AttackState attackState;
-    public StrikeState strikeState;
 
     [Header("dee · buh · guhng")]
     [SerializeField] private State currentState;
@@ -61,23 +58,23 @@ public class PlayerController : Core
         #endregion
     }
 
-    public void Strike(Vector2 mousePos)
+    public void Attack(Vector2 mousePos)
     {
-        inputManager.canInput = false; //lock input when we start striking, unlock in SetState() when we check for strikeState completition
-        strikeState.target = mousePos;
-        stateMachine.Set(strikeState, true);
+        inputManager.canInput = false; //lock input when we start striking, unlock in SetState() when we check for attackState completition
+        attackState.target = mousePos;
+        stateMachine.Set(attackState, true);
     }
 
     private void SetState()
     {
-        if (stateMachine.state == strikeState)
+        if (stateMachine.state == attackState)
         {
-            if (strikeState.isComplete) {
+            if (attackState.isComplete) {
                 inputManager.canInput = true;
                 stateMachine.Set(idleState); //we gotta get out of this doommed state somehow ://
             }
         }
-        else if (stateMachine.state != strikeState) {
+        else if (stateMachine.state != attackState) {
             if (Mathf.Abs(rb.linearVelocity.x) > data.bufferValue || Mathf.Abs(rb.linearVelocity.y) >= data.bufferValue)
             {
                 stateMachine.Set(walkState);

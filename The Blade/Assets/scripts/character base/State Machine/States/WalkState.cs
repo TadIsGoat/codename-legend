@@ -1,5 +1,3 @@
-using System.Data;
-using Unity.Mathematics;
 using UnityEngine;
 
 public class WalkState : State
