@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class HealthScript : MonoBehaviour
@@ -29,4 +30,8 @@ public class HealthScript : MonoBehaviour
         rb.AddForce(-relativeSource * knockback, ForceMode2D.Impulse);
         #endregion
     }
+
+    /*public IEnumerator TakeKnockback() {
+
+    }*/
 }
