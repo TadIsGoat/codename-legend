@@ -8,6 +8,7 @@ public class FightState : State
     public GameObject objectToAttack;
     [SerializeField][Tooltip("How close will the enemy get before striking")] public float attackingRange = 1f;
     [SerializeField][Tooltip("How far from the destination is considered as \"there\"")] public float destinationTreshhold = 0.1f;
+    [SerializeField] private HealthScript healthScript;
 
     public override void Enter()
     {
@@ -20,7 +21,7 @@ public class FightState : State
         if (stateMachine.state == navigateState) {
             navigateState.destination = objectToAttack.transform.position;
 
-            if (navigateState.isComplete){
+            if (navigateState.isComplete && !healthScript.isKnocked){
                 attackState.target = objectToAttack.transform.position;
                 stateMachine.Set(attackState, true);
             }

@@ -5,7 +5,6 @@ public class PatrolState : State
     [SerializeField] private IdleState idleState;
     [SerializeField] private NavigateState navigateState;
     [SerializeField] private Transform anchor;
-    [SerializeField] private EnemyData enemyData;
     [SerializeField][Tooltip("The range in which the character will be patrolling")][Range(0, 100)] public float patrolRadius = 5f;
     [SerializeField][Tooltip("How long will the character stay idle till it starts patrolling again")][Range(0, 10)] public float idleTime = 1f;
     [SerializeField][Tooltip("How far from the destination is considered as \"there\"")] public float destinationTreshhold = 0.1f;
@@ -27,11 +26,6 @@ public class PatrolState : State
                 GoToNext();
             }
         }
-    }
-
-    public override void Exit()
-    {
-
     }
 
     private void GoToNext() {

@@ -2,13 +2,6 @@ using UnityEngine;
 
 public class WalkState : State
 {
-    Animator animator;
-
-    private void Awake()
-    {
-        animator = GetComponentInChildren<Animator>();
-    }
-
     public override void Enter()
     {
 

@@ -55,14 +55,14 @@ public class AttackState : State
             StartCoroutine(weaponController.Attack(angle));
         }
 
-        rb.AddForce(Helper.AngleToVector2(angle) * attackMovement, ForceMode2D.Impulse);
+        rb.AddForce(Helper.AngleToVector2(angle).normalized * attackMovement, ForceMode2D.Impulse);
 
         Collider2D[] hit = Physics2D.OverlapBoxAll(attackRect.center, attackHitBox.size, angle, attackLayer);
         foreach (var target in hit)
         {
             try
             {
-                target.GetComponent<HealthScript>().TakeHit(damage, knockback, transform.position);
+                target.GetComponent<HealthScript>().TakeHit(damage, knockback, Helper.AngleToVector2(angle));
             }
             catch
             {
