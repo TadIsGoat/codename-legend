@@ -18,7 +18,7 @@ public class MainMenuManager : MonoBehaviour
         await sceneLoader.Transition();
 
         sceneLoader.LoadScene(GameData.SceneList.persistentObjects.ToString(), false);
-        sceneLoader.LoadScene(GameData.SceneList.BaseScene.ToString());
+        sceneLoader.LoadScene(GameData.SceneList.final.ToString());
 
         //StartCoroutine(UpdateLoadingBar());
     }

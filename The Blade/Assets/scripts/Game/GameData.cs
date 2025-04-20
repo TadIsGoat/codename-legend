@@ -10,6 +10,7 @@ public static class GameData
         MainMenu,
         BaseScene,
         persistentObjects,
+        final
     }
 
     public enum ActionMapList {
