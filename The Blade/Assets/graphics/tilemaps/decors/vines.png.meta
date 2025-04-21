@@ -1,10 +1,34 @@
 fileFormatVersion: 2
-guid: 6ecd0c88cb9d6854abf7e241cf9f2b5b
+guid: 6dfd6e85e31c92c428f3fbf6cb0998ac
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5939560479883064018
-    second: walls_rocky2_0
+      213: 4334182692249300709
+    second: vines_0
+  - first:
+      213: 584458075429408047
+    second: vines_1
+  - first:
+      213: -4168930459461943348
+    second: vines_2
+  - first:
+      213: -6542941398618018230
+    second: vines_3
+  - first:
+      213: -544221066211343244
+    second: vines_4
+  - first:
+      213: -3581230183815155265
+    second: vines_5
+  - first:
+      213: 9186252477414381592
+    second: vines_6
+  - first:
+      213: 3946642317362644857
+    second: vines_7
+  - first:
+      213: 7567551466474173971
+    second: vines_8
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,73 +124,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: walls_rocky2_0
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 48
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 2d2f06d89ce8d6250800000000000000
-      internalID: 5939560479883064018
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: walls_rocky2_1
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 48
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3bb1a7ead0d79734d95503937de2175a
-      internalID: 1171461716
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: walls_rocky2_2
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 48
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2fefc93d96fe059479ed1375cba2e5b3
-      internalID: 633496108
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: walls_rocky2_3
+      name: vines_0
       rect:
         serializedVersion: 2
         x: 0
@@ -181,14 +139,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bbed629745a8791438a99d0f8538b955
-      internalID: -2130054684
+      spriteID: e36c4507eecb5e040bfe0700df060d8a
+      internalID: -1291301307
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walls_rocky2_4
+      name: vines_1
       rect:
         serializedVersion: 2
         x: 16
@@ -203,14 +161,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 60eb6588c67f55b4591d73aa250cc5da
-      internalID: -1955536463
+      spriteID: d319a3c2dab38a24ea340327ebaeff29
+      internalID: -1625330628
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walls_rocky2_5
+      name: vines_2
       rect:
         serializedVersion: 2
         x: 32
@@ -225,36 +183,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a228ad0070446ff4489285c3e6ee30a5
-      internalID: 1419536975
+      spriteID: 365dac6e200996e459e2c432cbcdfaca
+      internalID: -2104475016
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walls_rocky2_6
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 32
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f1cd7512839ea7f4a939618c4ca78b41
-      internalID: -1179039499
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: walls_rocky2_7
+      name: vines_3
       rect:
         serializedVersion: 2
         x: 0
@@ -269,14 +205,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cb2c178968bc5bd4088d3ca75e5aa6b6
-      internalID: -617926145
+      spriteID: 10f4a6c045e49954b9d6e3001e919e62
+      internalID: -190465945
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walls_rocky2_8
+      name: vines_4
       rect:
         serializedVersion: 2
         x: 16
@@ -291,14 +227,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3d6d1d0ee8633854d82f9318d84eb772
-      internalID: 1008318661
+      spriteID: c5d40fa8dc2dec2418e4c6bbdae4b34e
+      internalID: -2128536495
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walls_rocky2_9
+      name: vines_5
       rect:
         serializedVersion: 2
         x: 32
@@ -313,36 +249,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 76df415e80b221e41a2a710387158e58
-      internalID: 94255302
+      spriteID: 213f723e1bddc3b48a20f3fa5aae01f8
+      internalID: -317190290
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walls_rocky2_10
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 16
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f6b5db49306c6f94e8cbcd45978bdd02
-      internalID: 1226919215
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: walls_rocky2_11
+      name: vines_6
       rect:
         serializedVersion: 2
         x: 0
@@ -357,14 +271,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b1dbe71578487764c881da9691521310
-      internalID: 1849070973
+      spriteID: 2f6f13f01d4189046b17d726e906170c
+      internalID: -559921717
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walls_rocky2_12
+      name: vines_7
       rect:
         serializedVersion: 2
         x: 16
@@ -379,14 +293,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e15ade34b57831d418d82913b85a329e
-      internalID: -392542125
+      spriteID: 0d149f6ccbd54c74bb6f2f50ae50c1ea
+      internalID: -771715919
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walls_rocky2_13
+      name: vines_8
       rect:
         serializedVersion: 2
         x: 32
@@ -401,30 +315,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9881f3fb8c5e87d46b421b36bf471d00
-      internalID: 164733336
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: walls_rocky2_14
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0d9fd7b1ab4bde6499eb5229fc092fce
-      internalID: 1674821424
+      spriteID: 7a07869cde401a7408cbc752e6337924
+      internalID: 1047269992
       vertices: []
       indices: 
       edges: []
@@ -433,7 +325,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 82822c39d2eff7240a8431698daa34ac
+    spriteID: e3196e212a464fb4b8c04bda87579c3e
     internalID: 0
     vertices: []
     indices: 
@@ -443,21 +335,15 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      walls_rocky2_0: 5939560479883064018
-      walls_rocky2_1: 1171461716
-      walls_rocky2_10: 1226919215
-      walls_rocky2_11: 1849070973
-      walls_rocky2_12: -392542125
-      walls_rocky2_13: 164733336
-      walls_rocky2_14: 1674821424
-      walls_rocky2_2: 633496108
-      walls_rocky2_3: -2130054684
-      walls_rocky2_4: -1955536463
-      walls_rocky2_5: 1419536975
-      walls_rocky2_6: -1179039499
-      walls_rocky2_7: -617926145
-      walls_rocky2_8: 1008318661
-      walls_rocky2_9: 94255302
+      vines_0: -1291301307
+      vines_1: -1625330628
+      vines_2: -2104475016
+      vines_3: -190465945
+      vines_4: -2128536495
+      vines_5: -317190290
+      vines_6: -559921717
+      vines_7: -771715919
+      vines_8: 1047269992
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

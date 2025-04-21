@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: 6ecd0c88cb9d6854abf7e241cf9f2b5b
+guid: 866a59b409f0db14192571697e748160
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5939560479883064018
-    second: walls_rocky2_0
+      213: 8405481183755235670
+    second: another-fucking-walls_0
+  - first:
+      213: -8379734070545791137
+    second: another-fucking-walls_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,11 +103,11 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: walls_rocky2_0
+      name: another-fucking-walls_0
       rect:
         serializedVersion: 2
-        x: 16
-        y: 48
+        x: 0
+        y: 16
         width: 16
         height: 16
       alignment: 0
@@ -115,168 +118,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2d2f06d89ce8d6250800000000000000
-      internalID: 5939560479883064018
+      spriteID: 651f5fb3a9446a470800000000000000
+      internalID: 8405481183755235670
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walls_rocky2_1
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 48
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3bb1a7ead0d79734d95503937de2175a
-      internalID: 1171461716
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: walls_rocky2_2
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 48
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2fefc93d96fe059479ed1375cba2e5b3
-      internalID: 633496108
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: walls_rocky2_3
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 32
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: bbed629745a8791438a99d0f8538b955
-      internalID: -2130054684
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: walls_rocky2_4
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 32
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 60eb6588c67f55b4591d73aa250cc5da
-      internalID: -1955536463
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: walls_rocky2_5
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 32
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a228ad0070446ff4489285c3e6ee30a5
-      internalID: 1419536975
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: walls_rocky2_6
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 32
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f1cd7512839ea7f4a939618c4ca78b41
-      internalID: -1179039499
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: walls_rocky2_7
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 16
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: cb2c178968bc5bd4088d3ca75e5aa6b6
-      internalID: -617926145
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: walls_rocky2_8
+      name: another-fucking-walls_1
       rect:
         serializedVersion: 2
         x: 16
@@ -289,16 +138,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 3d6d1d0ee8633854d82f9318d84eb772
-      internalID: 1008318661
+      spriteID: f5741e4b24435bb80800000000000000
+      internalID: -8379734070545791137
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walls_rocky2_9
+      name: another-fucking-walls_2
       rect:
         serializedVersion: 2
         x: 32
@@ -313,14 +162,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 76df415e80b221e41a2a710387158e58
-      internalID: 94255302
+      spriteID: 5f604ab44bf04f84ea4903672fea2758
+      internalID: 316880529
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walls_rocky2_10
+      name: another-fucking-walls_3
       rect:
         serializedVersion: 2
         x: 48
@@ -335,14 +184,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f6b5db49306c6f94e8cbcd45978bdd02
-      internalID: 1226919215
+      spriteID: 35a47b99856e7ac43b52cc161f71cf82
+      internalID: -1699477471
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walls_rocky2_11
+      name: another-fucking-walls_4
       rect:
         serializedVersion: 2
         x: 0
@@ -357,14 +206,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b1dbe71578487764c881da9691521310
-      internalID: 1849070973
+      spriteID: 259c6fe9c8537cc448ec2c618cdce492
+      internalID: -51157206
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walls_rocky2_12
+      name: another-fucking-walls_5
       rect:
         serializedVersion: 2
         x: 16
@@ -379,14 +228,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e15ade34b57831d418d82913b85a329e
-      internalID: -392542125
+      spriteID: ac13da6ad33ed46449756479c882b67f
+      internalID: -515256009
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walls_rocky2_13
+      name: another-fucking-walls_6
       rect:
         serializedVersion: 2
         x: 32
@@ -401,14 +250,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9881f3fb8c5e87d46b421b36bf471d00
-      internalID: 164733336
+      spriteID: 6b35ec24bfb3a824897f8cc0a992c202
+      internalID: 1378259807
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walls_rocky2_14
+      name: another-fucking-walls_7
       rect:
         serializedVersion: 2
         x: 48
@@ -423,8 +272,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0d9fd7b1ab4bde6499eb5229fc092fce
-      internalID: 1674821424
+      spriteID: 1f50e560282e24644b10fcc18eca92c4
+      internalID: 653881907
       vertices: []
       indices: 
       edges: []
@@ -433,7 +282,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 82822c39d2eff7240a8431698daa34ac
+    spriteID: 9b5eb74be38a6904c8fffab32b7bf12a
     internalID: 0
     vertices: []
     indices: 
@@ -443,21 +292,14 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      walls_rocky2_0: 5939560479883064018
-      walls_rocky2_1: 1171461716
-      walls_rocky2_10: 1226919215
-      walls_rocky2_11: 1849070973
-      walls_rocky2_12: -392542125
-      walls_rocky2_13: 164733336
-      walls_rocky2_14: 1674821424
-      walls_rocky2_2: 633496108
-      walls_rocky2_3: -2130054684
-      walls_rocky2_4: -1955536463
-      walls_rocky2_5: 1419536975
-      walls_rocky2_6: -1179039499
-      walls_rocky2_7: -617926145
-      walls_rocky2_8: 1008318661
-      walls_rocky2_9: 94255302
+      another-fucking-walls_0: 8405481183755235670
+      another-fucking-walls_1: -8379734070545791137
+      another-fucking-walls_2: 316880529
+      another-fucking-walls_3: -1699477471
+      another-fucking-walls_4: -51157206
+      another-fucking-walls_5: -515256009
+      another-fucking-walls_6: 1378259807
+      another-fucking-walls_7: 653881907
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

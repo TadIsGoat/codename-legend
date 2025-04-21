@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: dcd35d740d9f36a4fab114bb33e45241
+guid: 21bd3ae2daaacb2488285f225a4bcf19
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -940954722829293845
-    second: full-tree-01_0
+      213: 4151381682605280901
+    second: another-fucking-wall2s_0
+  - first:
+      213: 7739781230568909228
+    second: another-fucking-wall2s_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +103,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: full-tree-01_0
+      name: another-fucking-wall2s_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 48
-        height: 64
+        x: 32
+        y: 16
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +118,74 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: be6a80c3aae01f2f0800000000000000
-      internalID: -940954722829293845
+      spriteID: 58e40c635abac9930800000000000000
+      internalID: 4151381682605280901
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: another-fucking-wall2s_1
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca9ab47a50a396b60800000000000000
+      internalID: 7739781230568909228
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: another-fucking-wall2s_2
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 269a4ceb7bd44eb4f8020fe5aea1f4cc
+      internalID: 1471070788
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: another-fucking-wall2s_3
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f730fff05371384896afe8e207efa68
+      internalID: -1133542898
       vertices: []
       indices: 
       edges: []
@@ -125,7 +194,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: ad6eb6ad7bfac734e8d287a710409297
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +204,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      full-tree-01_0: -940954722829293845
+      another-fucking-wall2s_0: 4151381682605280901
+      another-fucking-wall2s_1: 7739781230568909228
+      another-fucking-wall2s_2: 1471070788
+      another-fucking-wall2s_3: -1133542898
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
