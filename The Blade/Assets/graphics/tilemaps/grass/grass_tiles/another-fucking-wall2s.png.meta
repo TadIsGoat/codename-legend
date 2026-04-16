@@ -159,7 +159,9 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      another-fucking-wall2s_0: 4151381682605280901
+      another-fucking-wall2s_1: 7739781230568909228
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
